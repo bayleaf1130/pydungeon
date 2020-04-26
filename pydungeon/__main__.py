@@ -1,8 +1,15 @@
+''' The main entry point '''
+
+# Standard Imports
 import sys
 
+# Third Party Imports
+# None
+
+# Local Imports
 from pydungeon import logger
 
-def main(sysargs):
+def main(sysargs=None):
     print('In Main')
     logger.warning('ERROR')
     logger.error('HELP')
