@@ -1,0 +1,110 @@
+character:
+  name:  ''
+  race: ''
+  level: 0
+  class: ''
+  xp: 0
+  alignment: 'EVIL'
+  background: 'LONG STRING'
+  speed: 0
+  death_saves:
+    failures: 0
+    successes: 0
+  initiative: 0
+  health: 0
+  armor_class: 0
+  hit_dice: ''
+  inspiration: 0
+  proficiency_bonus: 0
+  passive_wisdom: 0
+  inventory: 
+    - name: 'item1'
+      about: 'this is a cool item'
+      stats: 'item stats'
+      value: 0
+      weight: 0
+    - name: 'item2'
+      about: 'this is a super cool item'
+      stats: 'item stats'
+      value: 0
+      weight: 0
+  features:
+    - name: 'feature1'
+      about: 'this does this'
+    - name: 'feature2'
+      about: 'this does that'
+  traits:
+    - name: 'trait1'
+      about: 'this does this'
+    - name: 'trait2'
+      about: 'this does that'
+  weapon_attacks:
+    - name: 'attack1'
+      damage: 'd8'
+      about: 'cool attack'
+    - name: 'attack2'
+      damage: 'd8'
+      about: 'cool attack 2'
+  spell_attacks:
+    - name: 'spellattack1'
+      damage: 'd8'
+      about: 'spell'
+  spell_slots:
+    - name: 'fireball'
+      damage: 'd8'
+      about: 'spell'
+  spell_slots:
+    - name: 'fireball'
+      damage: 'd8'
+      about: 'spell'
+  language_proficiencies:
+    - language1
+    - langauge2
+    - langauge3
+  tool_proficiencies:
+    - tool1
+    - tool2
+    - tool3
+  weapon_proficiencies:
+    - weapon1
+    - weapon2
+    - weapon3
+  skills:
+    acrobatics: 0
+    animal_handling: 0
+    arcana: 0
+    athletics: 0
+    deception: 0
+    history: 0
+    insight: 0
+    intimidation: 0
+    investigation: 0
+    medicine: 0
+    nature: 0
+    perception: 0
+    performance: 0
+    persuasion: 0
+    religion: 0
+    sleight_of_hand: 0
+    stealth: 0
+    survival: 0
+  abilities:
+    strength: 0
+    dexterity: 0
+    constitution: 0
+    intelligence: 0
+    wisdom: 0
+    charisma: 0
+  saving_throws:
+    strength: 0
+    dexterity: 0
+    constitution: 0
+    intelligence: 0
+    wisdom: 0
+    charisma: 0
+  physical_traits:
+    - trait: 'weight'
+      value: 0
+    - trait: 'age'
+      value: 0
+  
