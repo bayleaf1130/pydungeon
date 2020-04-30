@@ -1,4 +1,5 @@
 from pydungeon.character.character import Character
+from pydungeon.gui.application import GuiApplication
 
 dwarf_character = Character()
 
@@ -15,3 +16,5 @@ print(dwarf_character.getBasicInformation())
 
 print("Proficiencies\n")
 print(dwarf_character.getProficiencies())
+
+GuiApplication().run()
