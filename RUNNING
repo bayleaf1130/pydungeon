@@ -1,0 +1,29 @@
+These are some quick directions for running the program and installation
+
+To install the application requirements without using setup.py
+        Run: pip install -r requirements.txt
+
+To install the application tests requirements without using setup.py
+        Run: pip install -r tests/requirements.txt
+
+To run the application with the interpreter
+        Run this in the top level pydungeon folder: python -m pydungeon
+        ** This runs the pydungeon __main__.py, the -m option runs a module
+
+To run the tests
+        Run this in the top level pydungeon folder: python -m pytest
+        ** Pytest must be installed obviously
+        ** Pytest has a ton of options you can use as well
+
+To install the application locally just for testing your current changes
+        Install: pip install -e .
+        Uninstall: pip uninstall pydungeon
+
+To install the application locally with setuptools
+        Install: python setup.py develop
+        Uninstall: python setup.py develop --uninstall
+        ** Setup tools usually cleans up better than pip directly so if that bothers use then use this
+
+To install from git using pip
+        Install: pip install git+https://github.com/bayleaf1130/pydungeon.git@BRANCH/ISSUE
+

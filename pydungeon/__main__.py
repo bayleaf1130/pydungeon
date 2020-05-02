@@ -1,20 +1,40 @@
+''' The main entry point '''
+
+# Standard Imports
+import sys
+
+# Third Party Imports
+# None
+
+# Local Imports
+from pydungeon import logger
 from pydungeon.character.character import Character
-from pydungeon.gui.application import GuiApplication
+# from pydungeon.gui.application import GuiApplication
 
-dwarf_character = Character()
+if __name__ == '__main__':
+    dwarf_character = Character()
 
-dwarf_character.name = "Dhunmic"
-dwarf_character.race = "Dwarf"
-dwarf_character.addFeatures("Dwarf", "Can dig really really big holes.")
-dwarf_character.addItem("Sword", "Big sword")
+    dwarf_character.name = "Dhunmic"
+    dwarf_character.race = "Dwarf"
+    dwarf_character.addFeatures("Dwarf", "Can dig really really big holes.")
+    dwarf_character.addItem("Sword", "Big sword")
 
-print("All Information\n")
-print(dwarf_character.getTotalInformation())
+    '''
+    print("All Information\n")
+    print(dwarf_character.getTotalInformation())
 
-print("Vital Information\n")
-print(dwarf_character.getBasicInformation())
+    print("Vital Information\n")
+    print(dwarf_character.getBasicInformation())
 
-print("Proficiencies\n")
-print(dwarf_character.getProficiencies())
+    print("Proficiencies\n")
+    print(dwarf_character.getProficiencies())
+    
+    GuiApplication().run()
+    '''
 
-GuiApplication().run()
+    from pprint import pprint
+    pprint(dwarf_character.asdict())
+    
+    another_character = Character()
+    another_character.fromdict(dwarf_character.asdict())
+    pprint(another_character.asdict())

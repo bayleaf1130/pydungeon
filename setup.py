@@ -1,6 +1,6 @@
 import setuptools
 
-with open('AUTHOR', 'r') as file:
+with open('AUTHORS', 'r') as file:
     authors = file.read().strip()
 
 with open('README.md', 'r') as file:
@@ -21,7 +21,7 @@ setuptools.setup(
         'License :: OSI Approved :: MIT License',
         'Operating System :: OS Independent',
     ],
-    python_requires='>=3.7'
+    python_requires='>=3.7',
     entry_points={
         'console_scripts': ['dungeon=pydungeon:__main__']
     }

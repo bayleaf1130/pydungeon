@@ -1,5 +1,4 @@
 
-
 class CharacterDeathSaves:
     _deathSaves = {}
 
@@ -16,3 +15,4 @@ class CharacterDeathSaves:
 
     def removeDeathSave(attribute):
         self._deathSaves.pop(self, attribute, None)
+
