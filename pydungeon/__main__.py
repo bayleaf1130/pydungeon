@@ -8,12 +8,24 @@ import sys
 
 # Local Imports
 from pydungeon import logger
-
-def main(sysargs=None):
-    print('In Main')
-    logger.warning('ERROR')
-    logger.error('HELP')
-
+from pydungeon.character.character import Character
+from pydungeon.gui.application import GuiApplication
 
 if __name__ == '__main__':
-    sys.exit(main(None))
+    dwarf_character = Character()
+
+    dwarf_character.name = "Dhunmic"
+    dwarf_character.race = "Dwarf"
+    dwarf_character.addFeatures("Dwarf", "Can dig really really big holes.")
+    dwarf_character.addItem("Sword", "Big sword")
+
+    print("All Information\n")
+    print(dwarf_character.getTotalInformation())
+
+    print("Vital Information\n")
+    print(dwarf_character.getBasicInformation())
+
+    print("Proficiencies\n")
+    print(dwarf_character.getProficiencies())
+
+    GuiApplication().run()
