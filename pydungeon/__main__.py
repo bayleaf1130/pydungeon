@@ -9,7 +9,7 @@ import sys
 # Local Imports
 from pydungeon import logger
 from pydungeon.character.character import Character
-from pydungeon.gui.application import GuiApplication
+# from pydungeon.gui.application import GuiApplication
 
 if __name__ == '__main__':
     dwarf_character = Character()
@@ -19,6 +19,7 @@ if __name__ == '__main__':
     dwarf_character.addFeatures("Dwarf", "Can dig really really big holes.")
     dwarf_character.addItem("Sword", "Big sword")
 
+    '''
     print("All Information\n")
     print(dwarf_character.getTotalInformation())
 
@@ -27,5 +28,13 @@ if __name__ == '__main__':
 
     print("Proficiencies\n")
     print(dwarf_character.getProficiencies())
-
+    
     GuiApplication().run()
+    '''
+
+    from pprint import pprint
+    pprint(dwarf_character.asdict())
+    
+    another_character = Character()
+    another_character.fromdict(dwarf_character.asdict())
+    pprint(another_character.asdict())

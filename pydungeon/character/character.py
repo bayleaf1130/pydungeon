@@ -8,6 +8,7 @@
 
 # Local Imports
 from pydungeon import logger
+from pydungeon.utils.config import dictionary_transform
 from pydungeon.character.characterDeathSaves import CharacterDeathSaves
 from pydungeon.character.characterFeatures import CharacterFeatures
 from pydungeon.character.characterInformation import CharacterInformation
@@ -38,10 +39,12 @@ CharacterTraits
 CharacterWeaponAttacks
 '''
 
+@dictionary_transform
 class Character(
     CharacterDeathSaves, CharacterFeatures, CharacterInformation, CharacterInventory, CharacterProficienciesInLanguages, 
 CharacterProficienciesInTools, CharacterProficienciesInWeapons, CharacterSavingThrows, CharacterSkills, CharacterSpellAttacks, 
 CharacterSpells, CharacterTraits, CharacterWeaponAttacks):
+
 
     def getBasicInformation(self):
         return str("Name: " + self.name + "\n" + 
@@ -103,3 +106,4 @@ CharacterSpells, CharacterTraits, CharacterWeaponAttacks):
         for ability in abilityList:
             abilityList += ("\n\t" + ability + ": " + abilityList[ability])
         return abilityList
+

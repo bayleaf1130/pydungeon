@@ -317,3 +317,15 @@ class CharacterInformation:
     def Weight(self, newWeight):
         self._Weight = newWeight
          
+    def asdict(self):
+        result_dict = {}
+        for key, value in self.__dict__.items():
+            if not callable(key):
+                # Just the attributes, not functions
+                result_dict[key] = value
+              
+    @classmethod
+    def fromdict(cls, data_dict):
+        instance = cls()
+        for key, value in data_dict.items():
+            instance[key] = value

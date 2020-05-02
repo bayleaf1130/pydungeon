@@ -13,3 +13,4 @@ class CharacterFeatures:
 
     def removeFeatures(featureName):
         self._characterFeaturesList.pop(self, featureName, None)
+
