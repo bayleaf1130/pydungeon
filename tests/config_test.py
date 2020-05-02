@@ -45,7 +45,6 @@ def create_random_character():
     character.proficiencyBonus = random.randint(1, 6)
 
     # Add the weird stuff
-    character.addSavingThrow('strength', 20)
 
     return character
 
