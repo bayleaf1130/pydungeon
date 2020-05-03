@@ -5,7 +5,7 @@ import string
 import json
 
 from pydungeon.utils.config import Config
-from pydungeon.character.character import Character
+from pydungeon.character.character import create_fifth_edition_character
 
 
 # Lists to choose data from
@@ -15,10 +15,10 @@ classes = ['', 'Rouge', 'Wizard', 'Warlock', 'Warrior', 'Druid', 'Ranger']
 
 # Create a character with random stats to save and load from
 def create_random_character():
-    character = Character()
+    character = create_fifth_edition_character()
     character.name = random.choice(names)
     character.race = random.choice(races)
-    character.charClass = random.choice(classes)
+    character.character_class = random.choice(classes)
     character.level = random.randint(1, 100)
 
     def gen_random_background():
@@ -29,20 +29,20 @@ def create_random_character():
 
         for i in range(500):
             words.append(gen_word(random.randint(1, 12)))
-            
+
 
         return ((' '.join(words)) + '.')
 
-    
+
     character.background = gen_random_background()
-    character.experiencePoints = random.randint(1, 10000)
-    character.armorClass = random.randint(1, 20)
-    character.hitDice = random.randint(1, 12)
+    character.experience = random.randint(1, 10000)
+    character.armor_class = random.randint(1, 20)
+    character.hitdice = random.randint(1, 12)
     character.inspiration = random.randint(1, 5)
-    character.allignment = random.choice(['Chaotic Neutral', 'Lawful Evil', 'Angelic', 'Lawful Good'])
+    character.alignment = random.choice(['Chaotic Neutral', 'Lawful Evil', 'Angelic', 'Lawful Good'])
     character.speed = random.randint(1,35)
-    character.passiveWisdom = random.randint(1,20)
-    character.proficiencyBonus = random.randint(1, 6)
+    character.passive_wisdom = random.randint(1,20)
+    character.proficiency = random.randint(1, 6)
 
     # Add the weird stuff
 

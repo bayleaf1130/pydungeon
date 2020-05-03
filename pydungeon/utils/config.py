@@ -9,25 +9,6 @@ import yaml
 # Local Imports
 from pydungeon import logger
 
-# Decorator for adding dict config to classes
-def dictionary_transform(cls):
-    # Modify the class attributes
-    def asdict(self):
-        result_dict = {}
-        for key,value in self.__dict__.items():
-            if not callable(key):
-                result_dict[key] = value
-
-        return result_dict
-
-    def fromdict(self, data_dict):
-        self.__dict__.update(data_dict)
-
-    setattr(cls, 'asdict', asdict)
-    setattr(cls, 'fromdict', fromdict)
-
-    return cls
-
 
 class Config(object):
     def __init__(self, config_name):
@@ -48,4 +29,4 @@ class Config(object):
                 logger.error(f'Could Not Save YAML File {self._config_name}', exc_info=True)
 
 
-        
+
