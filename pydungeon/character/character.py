@@ -75,7 +75,8 @@ class ListProperty(CharacterProperty):
             if self.name in that:
                 that[self.name].append(value)
             else:
-                that[self.name] = [value]
+                that[self.name] = []
+                that[self.name].append(value)
 
         return s
 
@@ -257,3 +258,10 @@ def create_fifth_edition_character(**kwargs):
 
     return obj
 
+
+
+if __name__ == '__main__':
+    character = create_fifth_edition_character()
+    print(character.inventory)
+    character.inventory = 13
+    print(character.inventory)

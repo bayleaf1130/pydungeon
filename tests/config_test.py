@@ -44,6 +44,17 @@ def create_random_character():
     character.passive_wisdom = random.randint(1,20)
     character.proficiency = random.randint(1, 6)
 
+    character.money = random.randint(1,1000)
+    character.death_saves = random.randint(1,3)
+    character.death_failures = random.randint(1,3)
+    character.inventory = 'item 1'
+    character.inventory = 'item 2'
+    character.inventory = 'item 3'
+
+    character.spells = 'fireball'
+    character.spells = 'icebeam'
+    character.spell_slots = 'icebeam'
+
     # Add the weird stuff
 
     return character
