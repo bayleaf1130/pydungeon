@@ -127,6 +127,161 @@ class DictionaryProperty(CharacterProperty):
 
         return d
 
+
+class Item(object):
+    __slots__ = ['_name', '_value', '_info']
+
+    def __init__(self, name, value=0, info=''):
+        self._name = name
+        self._value = value
+        self._info = info
+
+    @property
+    def name(self):
+        return self.name
+
+    @name.setter
+    def name(self, value):
+        self._name = value
+
+    @property
+    def value(self):
+        return self.value
+
+    @value.setter
+    def value(self, value):
+        self._value = value
+
+    @property
+    def info(self):
+        return self._info
+
+    @info.setter
+    def info(self, value):
+        self._info = value
+
+    def __str__(self):
+        return '\n'.join([f'name: {self._name}', f'value: {self._value}', f'info: {self._info}'])
+
+
+class Weapon(object):
+    __slots__ = ['_name', '_value', '_info', '_hitdice', '_weapon_type']
+
+    def __init__(self, name, value=0, info='', hitdice=8, weapon_type='strength'):
+        self._name = name
+        self._value = value
+        self._info = info
+        self._hitdice = 0
+        self._weapon_type = weapon_type
+
+    @property
+    def name(self):
+        return self.name
+
+    @name.setter
+    def name(self, value):
+        self._name = value
+
+
+    @property
+    def value(self):
+        return self.value
+
+    @value.setter
+    def value(self, value):
+        self._value = value
+
+    @property
+    def info(self):
+        return self._info
+
+    @info.setter
+    def info(self, value):
+        self._info = value
+
+    @property
+    def hitdice(self):
+        return self._hitdice
+
+    @hitdice.setter
+    def info(self, value):
+        self._hitdice = value
+
+    @property
+    def weapon_type(self):
+        return self._weapon_type
+
+    @weapon_type.setter
+    def weapon_type(self):
+        return self._weapon_type
+
+    def __str__(self):
+        return '\n'.join([f'name: {self._name}',
+                          f'value: {self._value}',
+                          f'info: {self._info}',
+                          f'hitdice:{self._hitdice}',
+                          f'weapon_type: {self._weapon_type}'])
+
+
+class Spell(object):
+    __slots__ = ['_name', '_value', '_info', '_hitdice', '_spell_type']
+
+    def __init__(self, name, value=0, info='', hitdice=8, spell_type='wisdom'):
+        self._name = name
+        self._value = value
+        self._info = info
+        self._hitdice = 0
+        self._spell_type = spell_type
+
+    @property
+    def name(self):
+        return self.name
+
+    @name.setter
+    def name(self, value):
+        self._name = value
+
+
+    @property
+    def value(self):
+        return self.value
+
+    @value.setter
+    def value(self, value):
+        self._value = value
+
+    @property
+    def info(self):
+        return self._info
+
+    @info.setter
+    def info(self, value):
+        self._info = value
+
+    @property
+    def hitdice(self):
+        return self._hitdice
+
+    @hitdice.setter
+    def info(self, value):
+        self._hitdice = value
+
+    @property
+    def spell_type(self):
+        return self._spell_type
+
+    @spell_type.setter
+    def spell_type(self, value):
+        self._spell_type = value
+
+    def __str__(self):
+        return '\n'.join([f'name: {self._name}',
+                          f'value: {self._value}',
+                          f'info: {self._info}',
+                          f'hitdice: {self._hitdice}',
+                          f'spell_type: {self._spell_type}'])
+
+# Create the character class with certain properties
 def character_class_factory(name, properties_list):
     # Create the base character with said properties
 
@@ -240,7 +395,7 @@ def create_fifth_edition_character(**kwargs):
                   ('animal_handling', 2),
                   ('sleight_of_hand', 2)]
 
-    obj.inventory = '2 Gold'
+    obj.inventory = Item('lockpick', 2, 'open doors')
     obj.spells = ''
     obj.spell_slots = ''
     obj.proficient_tools = ''
@@ -263,5 +418,6 @@ def create_fifth_edition_character(**kwargs):
 if __name__ == '__main__':
     character = create_fifth_edition_character()
     print(character.inventory)
+    character.inventory = Item('bottle', 2, 'store liquids')
     character.inventory = 13
     print(character.inventory)

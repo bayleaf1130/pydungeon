@@ -3,9 +3,10 @@ import os
 import random
 import string
 import json
+from deepdiff import DeepDiff
 
 from pydungeon.utils.config import Config
-from pydungeon.character.character import create_fifth_edition_character
+from pydungeon.character.character import create_fifth_edition_character, Item, Spell, Weapon
 
 
 # Lists to choose data from
@@ -47,13 +48,14 @@ def create_random_character():
     character.money = random.randint(1,1000)
     character.death_saves = random.randint(1,3)
     character.death_failures = random.randint(1,3)
-    character.inventory = 'item 1'
-    character.inventory = 'item 2'
-    character.inventory = 'item 3'
+    character.inventory = Item('item 2', 20, 'this is item 2')
+    character.inventory = Item('item 3', 23, 'this is item 3')
+    character.iventory = Weapon('axe', 100, 'big axe!', 12, 'strength')
 
-    character.spells = 'fireball'
-    character.spells = 'icebeam'
-    character.spell_slots = 'icebeam'
+    icebeam = Spell('icebeam', 2, 'shoot ice', 9, 'intelligence')
+    character.spells = Spell('fireball', 2, 'shoot fire', 8, 'wisdom')
+    character.spells = icebeam
+    character.spell_slots = icebeam
 
     # Add the weird stuff
 
@@ -81,9 +83,8 @@ def test_character_configuration():
     # Now remove the file for good measure
     os.remove(file_string)
 
-    first_string = json.dumps(data_dict, sort_keys=True)
-    second_string = json.dumps(reloaded_dict, sort_keys=True)
+    result = DeepDiff(data_dict, reloaded_dict)
 
-    # Test that the dict strings are the same
-    assert first_string == second_string
+    # Test that the dict are the same
+    assert (not result)
 

@@ -17,7 +17,7 @@ class Config(object):
     def load(self):
         with open(self._config_name, 'r') as stream:
             try:
-                return yaml.safe_load(stream)
+                return yaml.load(stream, Loader=yaml.FullLoader)
             except yaml.YAMLError as error:
                 logger.error(f'Could Not Load YAML File {self._config_name}', exc_info=True)
 
