@@ -17,7 +17,6 @@ class CharacterInformation:
     _inspiration: int = 0
     _proficiencyBonus: int = 0
     _passiveWisdom: int = 0
-    _savingThrows: int = 0
     _background: str = ""
     _allignment: str = ""
     _speed: int = 0
