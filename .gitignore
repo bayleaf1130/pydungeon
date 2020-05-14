@@ -127,3 +127,10 @@ dmypy.json
 
 # Pyre type checker
 .pyre/
+
+#caches
+**/__pycache__
+**/debug.log
+
+#kivy environment
+**/kivy_venv
