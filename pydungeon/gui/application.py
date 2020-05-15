@@ -4,6 +4,7 @@ from kivy.app import App
 from kivy.lang import Builder
 from kivy.uix.boxlayout import BoxLayout
 from kivy.uix.label import Label
+from kivy.uix.tabbedpanel import TabbedPanelItem
 from kivy.uix.checkbox import CheckBox
 from kivy.core.window import Window
 
@@ -23,21 +24,44 @@ python kivy_venv\share\kivy-examples\demo\showcase\main.py
 
 Builder.load_file('pydungeon/gui/kv_application_files/application.kv')
 
+
 class CharacterCreator(BoxLayout):
     pass
 
 
-class CategoryTabs(GridLayout):
+class CreationTab(GridLayout):
+    pass
 
-    def checkbox_click(self, instance, value, skinName, image_widget): 
+
+class ClassPanel(TabbedPanelItem):
+
+    def class_change(self, instance, value, skinName): 
         if value is True:
+            #image_widget = App.get_running_app().root.ids.creation.ids.character_image_widget
+            pass
+        
+    def add_custom_class(self, instance, new_class, scroll_gridlayout):
+        new_class_checkbox = CheckBox(size_hint_x= None, group= 'classes')
+        # on_active=app.root.checkbox_click(self, self.active, new_class.title(), app.character_image_widget)
+        new_class_label = Label(font_size='18sp', size_hint_x=None, text=new_class.title())
+
+        scroll_gridlayout.add_widget(new_class_checkbox)
+        scroll_gridlayout.add_widget(new_class_label)
+        pass
+
+
+class RacePanel(TabbedPanelItem):
+
+    def race_change(self, instance, value, skinName): 
+        if value is True:
+            image_widget = App.get_running_app().root.ids.creation_tab.ids.character_image_widget
             skinName = skinName.lower().replace(" ", "_").replace("-", "_")
             image_widget.source = 'gui/character_images/fantasy_' + skinName + '.png'
     
-    def add_custom_class(self, instance, new_race, scroll_gridlayout):
+    def add_custom_race(self, instance, new_race, scroll_gridlayout):
         app=App.get_running_app()
 
-        new_race_checkbox = CheckBox(size_hint_x= None, group= '1')
+        new_race_checkbox = CheckBox(size_hint_x= None, group= 'races')
         # on_active=app.root.checkbox_click(self, self.active, new_race.title(), app.character_image_widget)
         new_race_label = Label(font_size='18sp', size_hint_x=None, text=new_race.title())
 
@@ -50,6 +74,7 @@ class GuiApplication(App):
 
     def window_settings(self):
         Window.maximize()
+        Window.clearcolor = (.15, .15, .15, 1)
 
     def build(self):
         self.window_settings()
