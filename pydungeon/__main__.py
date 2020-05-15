@@ -9,10 +9,12 @@ import sys
 # Local Imports
 from pydungeon import logger
 from pydungeon.character.character import Character
+from pydungeon.gui.application import GuiApplication
 # from pydungeon.gui.application import GuiApplication
 
 if __name__ == '__main__':
-
+    GuiApplication().run()
+    '''
     dwarf_character = Character()
 
     dwarf_character.name = "Dhunmic"
@@ -44,3 +46,4 @@ if __name__ == '__main__':
     another_character = Character()
     another_character.fromdict(dwarf_character.asdict())
     pprint(another_character.asdict())
+    '''

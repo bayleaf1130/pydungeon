@@ -1,0 +1,188 @@
+<CharacterCreator>:
+    orientation: 'vertical'
+
+    GridLayout:
+        size_hint_y: 0.15
+        cols: 3
+
+        AnchorLayout:
+            anchor_x: 'center'
+            anchor_y: 'center'
+            Button:
+                size_hint: (None, 0.5)
+                text: "Exit"
+        
+        AnchorLayout:
+            anchor_x: 'center'
+            anchor_y: 'center'
+            TextInput:
+                size_hint: (0.9, 0.5)
+                font_size: '28dp'
+                halign: 'center'
+                hint_text: "Character Name"
+
+        AnchorLayout:
+            anchor_x: 'center'
+            anchor_y: 'center'
+            Button:
+                size_hint: (None, 0.5)
+                text: "Continue"
+        
+    CategoryTabs:
+
+<CategoryTabs>:
+    size_hint_y: 0.85
+    cols: 3
+
+    TabbedPanel:
+        do_default_tab: False
+
+        TabbedPanelItem:
+            text: 'Race'
+
+            BoxLayout:
+                orientation: 'vertical'
+                
+                ScrollView:
+                    scroll_type: ['bars']
+                    size_hint_x: 1
+                    bar_width: 15
+                    do_scroll_x: False
+                    do_scroll_y: True
+
+                    GridLayout:
+                        id: scroll_view_layout
+                        height: self.minimum_height
+                        size_hint_x: 1
+                        size_hint_y: None
+                        cols: 2
+                        spacing: 10
+                        row_default_height: 100
+                        row_force_default: True
+
+                        CheckBox:
+                            on_active: root.checkbox_click(self, self.active, 'Dragonborn', character_image_widget)
+                            size_hint_x: None
+                            group: '1'
+                            active: True
+                        Label:
+                            font_size: '18sp'
+                            size_hint_x: None   
+                            text: 'Dragonborn'
+                
+                        CheckBox:
+                            on_active: root.checkbox_click(self, self.active, 'Dwarf', character_image_widget)
+                            size_hint_x: None
+                            group: '1'
+                        Label:
+                            font_size: '18sp'
+                            size_hint_x: None   
+                            text: 'Dwarf'
+                
+                        CheckBox:
+                            on_active: root.checkbox_click(self, self.active, 'Elf', character_image_widget)
+                            size_hint_x: None
+                            group: '1'
+                        Label:
+                            font_size: '18sp'
+                            size_hint_x: None   
+                            text: 'Elf'
+
+                        CheckBox:
+                            on_active: root.checkbox_click(self, self.active, 'Gnome', character_image_widget)
+                            size_hint_x: None
+                            group: '1'
+                        Label:
+                            font_size: '18sp'
+                            size_hint_x: None   
+                            text: 'Gnome'
+                            
+                        CheckBox:
+                            on_active: root.checkbox_click(self, self.active, 'Half-Elf', character_image_widget)
+                            size_hint_x: None
+                            group: '1'
+                        Label:
+                            font_size: '18sp'
+                            size_hint_x: None   
+                            text: 'Half-Elf'
+
+                        CheckBox:
+                            on_active: root.checkbox_click(self, self.active, 'Halfling', character_image_widget)
+                            size_hint_x: None
+                            group: '1'
+                        Label:
+                            font_size: '18sp'
+                            size_hint_x: None   
+                            text: 'Halfling'
+
+                        CheckBox:
+                            on_active: root.checkbox_click(self, self.active, 'Half-Orc', character_image_widget)
+                            size_hint_x: None
+                            group: '1'
+                        Label:
+                            font_size: '18sp'
+                            size_hint_x: None   
+                            text: 'Half-Orc'
+                            
+                        CheckBox:
+                            on_active: root.checkbox_click(self, self.active, 'Human', character_image_widget)
+                            size_hint_x: None
+                            group: '1'
+                        Label:
+                            font_size: '18sp'
+                            size_hint_x: None   
+                            text: 'Human'
+
+                        CheckBox:
+                            on_active: root.checkbox_click(self, self.active, 'Tiefling', character_image_widget)
+                            size_hint_x: None
+                            group: '1'
+                        Label:
+                            font_size: '18sp'
+                            size_hint_x: None   
+                            text: 'Tiefling'
+
+
+                BoxLayout:
+                    orientation: 'horizontal'
+                    size_hint_y: 0.07
+                    anchor_y:'bottom'
+
+                    TextInput:
+                        id: custom_race_input
+                        size_hint_x: 0.8
+                        font_size: '18dp'
+                        halign: 'left'
+                        hint_text: "Custom Race"
+
+                    Button:
+                        on_press: root.add_custom_class(self, custom_race_input.text, scroll_view_layout)
+                        size_hint_x: 0.2
+                        text: 'Add\nRace'
+        
+        TabbedPanelItem:
+            text: 'Class'
+            Label:
+                text: 'Class info'
+                
+        TabbedPanelItem:
+            text: 'Abilities'
+            Label:
+                text: 'Abilities info'
+
+    AnchorLayout:
+        anchor_x: 'center'
+        anchor_y: 'center'
+        Image:
+            id: character_image_widget
+            size_hint: (0.8, 0.8)
+            allow_stretch: True
+            keep_ratio: True
+            source: 'gui/character_images/fantasy_dwarf.png'
+
+    AnchorLayout:
+        anchor_x: 'center'
+        anchor_y: 'center'
+        Button:
+            size_hint: (1, 1)
+            text: "Stats"

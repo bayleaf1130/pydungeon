@@ -1,9 +1,10 @@
 
-from kivy.app import App
 from kivy.uix.gridlayout import GridLayout
+from kivy.app import App
+from kivy.lang import Builder
+from kivy.uix.boxlayout import BoxLayout
 from kivy.uix.label import Label
-from kivy.uix.textinput import TextInput
-from kivy.graphics import Color, Rectangle
+from kivy.uix.checkbox import CheckBox
 from kivy.core.window import Window
 
 '''
@@ -20,44 +21,36 @@ python -m pip install kivy==1.11.1
 python kivy_venv\share\kivy-examples\demo\showcase\main.py
 '''
 
+Builder.load_file('pydungeon/gui/kv_application_files/application.kv')
+
+class CharacterCreator(BoxLayout):
+    pass
+
+
+class CategoryTabs(GridLayout):
+
+    def checkbox_click(self, instance, value, skinName, image_widget): 
+        if value is True:
+            skinName = skinName.lower().replace(" ", "_").replace("-", "_")
+            image_widget.source = 'gui/character_images/fantasy_' + skinName + '.png'
+    
+    def add_custom_class(self, instance, new_race, scroll_gridlayout):
+        app=App.get_running_app()
+
+        new_race_checkbox = CheckBox(size_hint_x= None, group= '1')
+        # on_active=app.root.checkbox_click(self, self.active, new_race.title(), app.character_image_widget)
+        new_race_label = Label(font_size='18sp', size_hint_x=None, text=new_race.title())
+
+        scroll_gridlayout.add_widget(new_race_checkbox)
+        scroll_gridlayout.add_widget(new_race_label)
+        pass
+
 
 class GuiApplication(App):
-
-    def build(self):
-        self.window_settings()
-        return LoginScreen()
 
     def window_settings(self):
         Window.maximize()
 
-
-class LoginScreen(GridLayout):
-
-    def __init__(self, **kwargs):
-        super(LoginScreen, self).__init__(**kwargs)
-        self.cols = 2
-        self.add_widgets()
-    
-        with self.canvas.before:
-            Color(0, 0, 1, 1) # green; colors range from 0-1 instead of 0-255
-            self.rect = Rectangle(size=self.size,
-                                pos=self.pos)
-        
-        self.bind(pos=self.update_rect, size=self.update_rect)
-
-    
-    def add_widgets(self):
-        self.add_widget(Label(text='Character Name'))
-        self.username = TextInput(multiline=False)
-        self.add_widget(self.username)
-        self.add_widget(Label(text='Race'))
-        self.race = TextInput(multiline=False)
-        self.add_widget(self.race)
-        self.add_widget(Label(text='Class'))
-        self.characterClass = TextInput(multiline=False)
-        self.add_widget(self.characterClass)
-
-    
-    def update_rect(self, instance, value):
-        instance.rect.pos = instance.pos
-        instance.rect.size = instance.size
+    def build(self):
+        self.window_settings()
+        return CharacterCreator()
