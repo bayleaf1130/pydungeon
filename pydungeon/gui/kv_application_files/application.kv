@@ -50,15 +50,31 @@
             Label:
                 text: 'Abilities info'
 
-    AnchorLayout:
-        anchor_x: 'center'
-        anchor_y: 'center'
-        Image:
-            id: character_image_widget
-            size_hint: (0.8, 0.8)
-            allow_stretch: True
-            keep_ratio: True
-            source: 'gui/character_images/fantasy_dragonborn.png'
+    RelativeLayout:
+    
+        AnchorLayout:
+            anchor_x: 'left'
+            anchor_y: 'top'
+            padding: [25, 0]
+
+            Image:  
+                id: class_icon_widget
+                allow_stretch: True
+                keep_ratio: True
+                width: '50dp'
+                size_hint: 0.2, 0.2
+                source: 'gui/classes_icons/barbarian_icon.png'
+
+        AnchorLayout:
+            anchor_x: 'center'
+            anchor_y: 'center'
+
+            Image:
+                id: character_image_widget
+                size_hint: (0.85, 0.85)
+                allow_stretch: True
+                keep_ratio: True
+                source: 'gui/character_images/fantasy_dragonborn.png'
 
     TabbedPanel:
         tab_width: self.width/5
@@ -117,6 +133,7 @@
                     on_active: root.race_change(self, self.active, 'Dragonborn')
                     size_hint_x: None
                     group: 'races'
+                    allow_no_selection: False
                     active: True
                 Label:
                     font_size: '18sp'
@@ -127,6 +144,7 @@
                     on_active: root.race_change(self, self.active, 'Dwarf')
                     size_hint_x: None
                     group: 'races'
+                    allow_no_selection: False
                 Label:
                     font_size: '18sp'
                     size_hint_x: None   
@@ -136,6 +154,7 @@
                     on_active: root.race_change(self, self.active, 'Elf')
                     size_hint_x: None
                     group: 'races'
+                    allow_no_selection: False
                 Label:
                     font_size: '18sp'
                     size_hint_x: None   
@@ -145,6 +164,7 @@
                     on_active: root.race_change(self, self.active, 'Gnome')
                     size_hint_x: None
                     group: 'races'
+                    allow_no_selection: False
                 Label:
                     font_size: '18sp'
                     size_hint_x: None   
@@ -154,6 +174,7 @@
                     on_active: root.race_change(self, self.active, 'Half-Elf')
                     size_hint_x: None
                     group: 'races'
+                    allow_no_selection: False
                 Label:
                     font_size: '18sp'
                     size_hint_x: None   
@@ -163,6 +184,7 @@
                     on_active: root.race_change(self, self.active, 'Halfling')
                     size_hint_x: None
                     group: 'races'
+                    allow_no_selection: False
                 Label:
                     font_size: '18sp'
                     size_hint_x: None   
@@ -172,6 +194,7 @@
                     on_active: root.race_change(self, self.active, 'Half-Orc')
                     size_hint_x: None
                     group: 'races'
+                    allow_no_selection: False
                 Label:
                     font_size: '18sp'
                     size_hint_x: None   
@@ -181,6 +204,7 @@
                     on_active: root.race_change(self, self.active, 'Human')
                     size_hint_x: None
                     group: 'races'
+                    allow_no_selection: False
                 Label:
                     font_size: '18sp'
                     size_hint_x: None   
@@ -190,6 +214,7 @@
                     on_active: root.race_change(self, self.active, 'Tiefling')
                     size_hint_x: None
                     group: 'races'
+                    allow_no_selection: False
                 Label:
                     font_size: '18sp'
                     size_hint_x: None   
@@ -215,7 +240,7 @@
 
 
 <ClassPanel>:
-    text: 'Race'
+    text: 'Class'
 
     BoxLayout:
         orientation: 'vertical'
@@ -241,6 +266,7 @@
                     on_active: root.class_change(self, self.active, 'Barbarian')
                     size_hint_x: None
                     group: 'classes'
+                    allow_no_selection: False
                     active: True
                 Label:
                     font_size: '18sp'
@@ -251,6 +277,7 @@
                     on_active: root.class_change(self, self.active, 'Bard')
                     size_hint_x: None
                     group: 'classes'
+                    allow_no_selection: False
                 Label:
                     font_size: '18sp'
                     size_hint_x: None   
@@ -260,6 +287,7 @@
                     on_active: root.class_change(self, self.active, 'Cleric')
                     size_hint_x: None
                     group: 'classes'
+                    allow_no_selection: False
                 Label:
                     font_size: '18sp'
                     size_hint_x: None   
@@ -269,6 +297,7 @@
                     on_active: root.class_change(self, self.active, 'Druid')
                     size_hint_x: None
                     group: 'classes'
+                    allow_no_selection: False
                 Label:
                     font_size: '18sp'
                     size_hint_x: None   
@@ -278,6 +307,7 @@
                     on_active: root.class_change(self, self.active, 'Fighter')
                     size_hint_x: None
                     group: 'classes'
+                    allow_no_selection: False
                 Label:
                     font_size: '18sp'
                     size_hint_x: None   
@@ -287,6 +317,7 @@
                     on_active: root.class_change(self, self.active, 'Monk')
                     size_hint_x: None
                     group: 'classes'
+                    allow_no_selection: False
                 Label:
                     font_size: '18sp'
                     size_hint_x: None   
@@ -296,6 +327,7 @@
                     on_active: root.class_change(self, self.active, 'Paladin')
                     size_hint_x: None
                     group: 'classes'
+                    allow_no_selection: False
                 Label:
                     font_size: '18sp'
                     size_hint_x: None   
@@ -305,6 +337,7 @@
                     on_active: root.class_change(self, self.active, 'Ranger')
                     size_hint_x: None
                     group: 'classes'
+                    allow_no_selection: False
                 Label:
                     font_size: '18sp'
                     size_hint_x: None   
@@ -314,6 +347,7 @@
                     on_active: root.class_change(self, self.active, 'Rogue')
                     size_hint_x: None
                     group: 'classes'
+                    allow_no_selection: False
                 Label:
                     font_size: '18sp'
                     size_hint_x: None   
@@ -323,6 +357,7 @@
                     on_active: root.class_change(self, self.active, 'Sorcerer')
                     size_hint_x: None
                     group: 'classes'
+                    allow_no_selection: False
                 Label:
                     font_size: '18sp'
                     size_hint_x: None   
@@ -332,6 +367,7 @@
                     on_active: root.class_change(self, self.active, 'Warlock')
                     size_hint_x: None
                     group: 'classes'
+                    allow_no_selection: False
                 Label:
                     font_size: '18sp'
                     size_hint_x: None   
@@ -341,6 +377,7 @@
                     on_active: root.class_change(self, self.active, 'Wizard')
                     size_hint_x: None
                     group: 'classes'
+                    allow_no_selection: False
                 Label:
                     font_size: '18sp'
                     size_hint_x: None   

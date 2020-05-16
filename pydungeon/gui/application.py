@@ -35,10 +35,11 @@ class CreationTab(GridLayout):
 
 class ClassPanel(TabbedPanelItem):
 
-    def class_change(self, instance, value, skinName): 
+    def class_change(self, instance, value, className): 
         if value is True:
-            #image_widget = App.get_running_app().root.ids.creation.ids.character_image_widget
-            pass
+            image_widget = App.get_running_app().root.ids.creation_tab.ids.class_icon_widget
+            className = className.lower().replace(" ", "_").replace("-", "_")
+            image_widget.source = 'gui/classes_icons/' + className + '_icon.png'
         
     def add_custom_class(self, instance, new_class, scroll_gridlayout):
         new_class_checkbox = CheckBox(size_hint_x= None, group= 'classes')
