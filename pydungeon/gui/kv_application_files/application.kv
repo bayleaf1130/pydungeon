@@ -42,12 +42,16 @@
         do_default_tab: False
 
         RacePanel:
+            id: race_panel
         
         ClassPanel:
+            id: class_panel
                 
         AbilitiesPanel:
+            id: abilities_panel
 
         SkillsPanel:
+            id: skills_panel
 
 
     RelativeLayout:
@@ -85,13 +89,13 @@
         BonusesPanel:
                 
         InventoryPanel:
-                
-        TabbedPanelItem:
-            text: 'Proficiencies'
-            Label:
-                text: 'Language + Weapon... Proficiency info'
+            id: inventory_panel
+
+        ProficienciesPanel:
+            id: proficiencies_panel
                 
         AttackPanel:
+            id: attack_panel
 
 
 <RacePanel>:
@@ -958,12 +962,24 @@
 
             BoxLayout:
                 orientation: 'vertical'
-                TextInput:
-                    id: inventory_item_input
+
+                BoxLayout:
+                    orientation: 'horizontal'
                     size_hint_y: 0.4
-                    font_size: '18dp'
-                    halign: 'left'
-                    hint_text: "Inventory Item"
+                    Button:
+                        id: item_dropdown_type
+                        size_hint_x: 0.3
+                        size_hint_y: 1
+                        text: 'Type'
+                        on_release: root.drop_down.open(self)
+                        
+                    TextInput:
+                        id: inventory_item_input
+                        size_hint_x: 0.7
+                        size_hint_y: 1
+                        font_size: '18dp'
+                        halign: 'left'
+                        hint_text: "Inventory Item"
 
                 TextInput:
                     id: inventory_item_description_input
@@ -975,7 +991,71 @@
             Button:
                 on_press: root.add_inventory_item(self, inventory_item_input.text, inventory_item_description_input.text, scroll_view_layout_inventory)
                 size_hint_x: 0.2
+                size_hint_y: 1
                 text: 'Add\nItem'
+
+
+<ProficienciesPanel>:
+    text: 'Proficiency'
+
+    BoxLayout:
+        orientation: 'vertical'
+        
+        ScrollView:
+            scroll_type: ['bars']
+            size_hint_x: 1
+            bar_width: 15
+            do_scroll_x: False
+            do_scroll_y: True
+
+            GridLayout:
+                id: scroll_view_layout_proficiency
+                height: self.minimum_height
+                size_hint_x: 1
+                size_hint_y: None
+                cols: 1
+                spacing: 10
+                row_default_height: 100
+                row_force_default: True
+
+        BoxLayout:
+            orientation: 'horizontal'
+            size_hint_y: 0.25
+            anchor_y:'bottom'
+
+            BoxLayout:
+                orientation: 'vertical'
+
+                BoxLayout:
+                    orientation: 'horizontal'
+                    size_hint_y: 0.4
+                    Button:
+                        id: proficiency_dropdown_type
+                        size_hint_x: 0.3
+                        size_hint_y: 1
+                        text: 'Type'
+                        on_release: root.drop_down.open(self)
+                        
+                    TextInput:
+                        id: proficiency_item_input
+                        size_hint_x: 0.7
+                        size_hint_y: 1
+                        font_size: '18dp'
+                        halign: 'left'
+                        hint_text: "Proficiency Name"
+
+                TextInput:
+                    id: proficiency_item_description_input
+                    size_hint_y: 0.6
+                    font_size: '18dp'
+                    halign: 'left'
+                    hint_text: "Proficiency Description"
+
+            Button:
+                on_press: root.add_proficiency(self, proficiency_item_input.text, proficiency_item_description_input.text, scroll_view_layout_proficiency)
+                size_hint_x: 0.2
+                size_hint_y: 1
+                text: 'Add\nProficiency'
 
 
 <AttackPanel>:
@@ -992,7 +1072,7 @@
             do_scroll_y: True
 
             GridLayout:
-                id: scroll_view_attack_inventory
+                id: scroll_view_layout_attack
                 height: self.minimum_height
                 size_hint_x: 1
                 size_hint_y: None
@@ -1008,12 +1088,24 @@
 
             BoxLayout:
                 orientation: 'vertical'
-                TextInput:
-                    id: attack_item_input
+
+                BoxLayout:
+                    orientation: 'horizontal'
                     size_hint_y: 0.4
-                    font_size: '18dp'
-                    halign: 'left'
-                    hint_text: "Attack Name"
+                    Button:
+                        id: attack_dropdown_type
+                        size_hint_x: 0.3
+                        size_hint_y: 1
+                        text: 'Type'
+                        on_release: root.drop_down.open(self)
+                        
+                    TextInput:
+                        id: attack_item_input
+                        size_hint_x: 0.7
+                        size_hint_y: 1
+                        font_size: '18dp'
+                        halign: 'left'
+                        hint_text: "Attack Name"
 
                 TextInput:
                     id: attack_item_description_input
@@ -1023,8 +1115,9 @@
                     hint_text: "Attack Description"
 
             Button:
-                on_press: root.add_attack(self, attack_item_input.text, attack_item_description_input.text, scroll_view_attack_inventory)
+                on_press: root.add_attack(self, attack_item_input.text, attack_item_description_input.text, scroll_view_layout_attack)
                 size_hint_x: 0.2
+                size_hint_y: 1
                 text: 'Add\nAttack'
 
 
@@ -1042,3 +1135,52 @@
         hint_text_color: [1, 1, 1, 1]
         hint_text: "___"
         size_hint: (None, 0.5)
+
+<InventoryDropDown>:
+    id: inventory_dropdown
+    Button:
+        text: 'Weapon'
+        size_hint_y: None
+        height: 44
+        on_release: root.drop_down_control('Weapon')
+    Button:
+        text: 'Spell'
+        size_hint_y: None
+        height: 44
+        on_release: root.drop_down_control('Spell')
+    Button:
+        text: 'Other'
+        size_hint_y: None
+        height: 44
+        on_release: root.drop_down_control('Other')
+
+<AttackDropDown>:
+    id: inventory_dropdown
+    Button:
+        text: 'Spell'
+        size_hint_y: None
+        height: 44
+        on_release: root.drop_down_control('Spell')
+    Button:
+        text: 'Weapon'
+        size_hint_y: None
+        height: 44
+        on_release: root.drop_down_control('Weapon')
+
+<ProficienciesDropDown>:
+    id: inventory_dropdown
+    Button:
+        text: 'Language'
+        size_hint_y: None
+        height: 44
+        on_release: root.drop_down_control('Language')
+    Button:
+        text: 'Weapon'
+        size_hint_y: None
+        height: 44
+        on_release: root.drop_down_control('Weapon')
+    Button:
+        text: 'Tool'
+        size_hint_y: None
+        height: 44
+        on_release: root.drop_down_control('Tool')

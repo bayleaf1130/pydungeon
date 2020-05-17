@@ -13,6 +13,7 @@ from kivy.uix.label import Label
 from kivy.uix.button import Button
 from kivy.uix.tabbedpanel import TabbedPanelItem
 from kivy.uix.checkbox import CheckBox
+from kivy.uix.dropdown import DropDown
 
 
 '''
@@ -84,7 +85,11 @@ class BonusesPanel(TabbedPanelItem):
     pass
 
 
-class InventoryPanel(TabbedPanelItem):    
+class InventoryPanel(TabbedPanelItem):  
+
+    def __init__(self, **kwargs):
+        super().__init__(**kwargs)
+        self.drop_down = InventoryDropDown()  
     
     def add_inventory_item(self, instance, item_name, item_description, scroll_gridlayout):
         app=App.get_running_app()
@@ -108,7 +113,11 @@ class InventoryPanel(TabbedPanelItem):
         pass
 
 
-class AttackPanel(TabbedPanelItem):    
+class AttackPanel(TabbedPanelItem):  
+
+    def __init__(self, **kwargs):
+        super().__init__(**kwargs)
+        self.drop_down = AttackDropDown()    
     
     def add_attack(self, instance, attack_name, attack_description, scroll_gridlayout):
         app=App.get_running_app()
@@ -132,12 +141,62 @@ class AttackPanel(TabbedPanelItem):
         pass
 
 
+class ProficienciesPanel(TabbedPanelItem):
+
+    def __init__(self, **kwargs):
+        super().__init__(**kwargs)
+        self.drop_down = ProficienciesDropDown()    
+    
+    def add_proficiency(self, instance, proficiency_name, proficiency_description, scroll_gridlayout):
+        app=App.get_running_app()
+
+        layout = BoxLayout(orientation='horizontal')
+        proficiency_description_label = Label(font_size='14sp', size_hint_x=0.7, text=proficiency_description, halign="left", valign="top")
+        proficiency_name_button = Button(font_size='18sp', size_hint_x=0.3, text=proficiency_name.title())
+        proficiency_name_button.pressed = 0
+        proficiency_name_button.bind(on_press=lambda item_name: self.show_description(proficiency_name_button, proficiency_description_label, layout))
+
+        layout.add_widget(proficiency_name_button)
+
+        scroll_gridlayout.add_widget(layout)
+
+    def show_description(self, name_button, description_label, layout):
+        name_button.pressed = (name_button.pressed + 1) % 2
+        if(name_button.pressed == 1):
+            layout.add_widget(description_label)
+        else:
+            layout.remove_widget(description_label)
+        pass
+
+
+
 class SkillsPanel(TabbedPanelItem):
     pass
 
 
 class AbilitiesPanel(TabbedPanelItem):
     pass
+
+
+class InventoryDropDown(DropDown):
+
+    def drop_down_control(self, name):
+        #App.get_running_app().root.ids.creation_tab.ids.inventory_panel.drop_down.close(self)
+        App.get_running_app().root.ids.creation_tab.ids.inventory_panel.ids.item_dropdown_type.text = name
+
+
+class AttackDropDown(DropDown):
+
+    def drop_down_control(self, name):
+        #App.get_running_app().root.ids.creation_tab.ids.inventory_panel.drop_down.close(self)
+        App.get_running_app().root.ids.creation_tab.ids.attack_panel.ids.attack_dropdown_type.text = name
+
+
+class ProficienciesDropDown(DropDown):
+
+    def drop_down_control(self, name):
+        #App.get_running_app().root.ids.creation_tab.ids.inventory_panel.drop_down.close(self)
+        App.get_running_app().root.ids.creation_tab.ids.proficiencies_panel.ids.proficiency_dropdown_type.text = name
 
 
 class InputField(AnchorLayout):
