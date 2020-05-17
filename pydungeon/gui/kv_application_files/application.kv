@@ -1,0 +1,1186 @@
+<CharacterCreator>:
+    orientation: 'vertical'
+
+    GridLayout:
+        size_hint_y: 0.15
+        cols: 3
+
+        AnchorLayout:
+            anchor_x: 'center'
+            anchor_y: 'center'
+            Button:
+                size_hint: (None, 0.5)
+                font_size: '18dp'
+                text: "Exit"
+        
+        AnchorLayout:
+            anchor_x: 'center'
+            anchor_y: 'center'
+            TextInput:
+                size_hint: (0.9, 0.5)
+                font_size: '28dp'
+                halign: 'center'
+                hint_text: "Character Name"
+
+        AnchorLayout:
+            anchor_x: 'center'
+            anchor_y: 'center'
+            Button:
+                size_hint: (None, 0.5)
+                font_size: '18dp'
+                text: "Continue"
+        
+    CreationTab:
+        id: creation_tab
+
+<CreationTab>:
+    size_hint_y: 0.85
+    cols: 4
+
+    TabbedPanel:
+        tab_width: self.width/4
+        do_default_tab: False
+
+        RacePanel:
+            id: race_panel
+        
+        ClassPanel:
+            id: class_panel
+                
+        AbilitiesPanel:
+            id: abilities_panel
+
+        SkillsPanel:
+            id: skills_panel
+
+
+    RelativeLayout:
+    
+        AnchorLayout:
+            anchor_x: 'left'
+            anchor_y: 'top'
+            padding: [25, 0]
+
+            Image:  
+                id: class_icon_widget
+                allow_stretch: True
+                keep_ratio: True
+                width: '50dp'
+                size_hint: 0.2, 0.2
+                source: 'gui/classes_icons/barbarian_icon.png'
+
+        AnchorLayout:
+            anchor_x: 'center'
+            anchor_y: 'center'
+
+            Image:
+                id: character_image_widget
+                size_hint: (0.85, 0.85)
+                allow_stretch: True
+                keep_ratio: True
+                source: 'gui/character_images/fantasy_dragonborn.png'
+
+    TabbedPanel:
+        tab_width: self.width/5
+        do_default_tab: False
+                
+        StatsPanel:
+                
+        BonusesPanel:
+                
+        InventoryPanel:
+            id: inventory_panel
+
+        ProficienciesPanel:
+            id: proficiencies_panel
+                
+        AttackPanel:
+            id: attack_panel
+
+
+<RacePanel>:
+    text: 'Race'
+
+    BoxLayout:
+        orientation: 'vertical'
+        
+        ScrollView:
+            scroll_type: ['bars']
+            size_hint_x: 1
+            bar_width: 15
+            do_scroll_x: False
+            do_scroll_y: True
+
+            GridLayout:
+                id: scroll_view_layout_races
+                height: self.minimum_height
+                size_hint_x: 1
+                size_hint_y: None
+                cols: 2
+                spacing: 10
+                row_default_height: 100
+                row_force_default: True
+
+                CheckBox:
+                    on_active: root.race_change(self, self.active, 'Dragonborn')
+                    size_hint_x: None
+                    group: 'races'
+                    allow_no_selection: False
+                    active: True
+                Label:
+                    font_size: '18sp'
+                    size_hint_x: None   
+                    text: 'Dragonborn'
+        
+                CheckBox:
+                    on_active: root.race_change(self, self.active, 'Dwarf')
+                    size_hint_x: None
+                    group: 'races'
+                    allow_no_selection: False
+                Label:
+                    font_size: '18sp'
+                    size_hint_x: None   
+                    text: 'Dwarf'
+        
+                CheckBox:
+                    on_active: root.race_change(self, self.active, 'Elf')
+                    size_hint_x: None
+                    group: 'races'
+                    allow_no_selection: False
+                Label:
+                    font_size: '18sp'
+                    size_hint_x: None   
+                    text: 'Elf'
+
+                CheckBox:
+                    on_active: root.race_change(self, self.active, 'Gnome')
+                    size_hint_x: None
+                    group: 'races'
+                    allow_no_selection: False
+                Label:
+                    font_size: '18sp'
+                    size_hint_x: None   
+                    text: 'Gnome'
+                    
+                CheckBox:
+                    on_active: root.race_change(self, self.active, 'Half-Elf')
+                    size_hint_x: None
+                    group: 'races'
+                    allow_no_selection: False
+                Label:
+                    font_size: '18sp'
+                    size_hint_x: None   
+                    text: 'Half-Elf'
+
+                CheckBox:
+                    on_active: root.race_change(self, self.active, 'Halfling')
+                    size_hint_x: None
+                    group: 'races'
+                    allow_no_selection: False
+                Label:
+                    font_size: '18sp'
+                    size_hint_x: None   
+                    text: 'Halfling'
+
+                CheckBox:
+                    on_active: root.race_change(self, self.active, 'Half-Orc')
+                    size_hint_x: None
+                    group: 'races'
+                    allow_no_selection: False
+                Label:
+                    font_size: '18sp'
+                    size_hint_x: None   
+                    text: 'Half-Orc'
+                    
+                CheckBox:
+                    on_active: root.race_change(self, self.active, 'Human')
+                    size_hint_x: None
+                    group: 'races'
+                    allow_no_selection: False
+                Label:
+                    font_size: '18sp'
+                    size_hint_x: None   
+                    text: 'Human'
+
+                CheckBox:
+                    on_active: root.race_change(self, self.active, 'Tiefling')
+                    size_hint_x: None
+                    group: 'races'
+                    allow_no_selection: False
+                Label:
+                    font_size: '18sp'
+                    size_hint_x: None   
+                    text: 'Tiefling'
+
+
+        BoxLayout:
+            orientation: 'horizontal'
+            size_hint_y: 0.07
+            anchor_y:'bottom'
+
+            TextInput:
+                id: custom_race_input
+                size_hint_x: 0.8
+                font_size: '18dp'
+                halign: 'left'
+                hint_text: "Custom Race"
+
+            Button:
+                on_press: root.add_custom_race(self, custom_race_input.text, scroll_view_layout_races)
+                size_hint_x: 0.2
+                text: 'Add\nRace'
+
+
+<ClassPanel>:
+    text: 'Class'
+
+    BoxLayout:
+        orientation: 'vertical'
+        
+        ScrollView:
+            scroll_type: ['bars']
+            size_hint_x: 1
+            bar_width: 15
+            do_scroll_x: False
+            do_scroll_y: True
+
+            GridLayout:
+                id: scroll_view_layout_classes
+                height: self.minimum_height
+                size_hint_x: 1
+                size_hint_y: None
+                cols: 2
+                spacing: 10
+                row_default_height: 100
+                row_force_default: True
+
+                CheckBox:
+                    on_active: root.class_change(self, self.active, 'Barbarian')
+                    size_hint_x: None
+                    group: 'classes'
+                    allow_no_selection: False
+                    active: True
+                Label:
+                    font_size: '18sp'
+                    size_hint_x: None   
+                    text: 'Barbarian'
+        
+                CheckBox:
+                    on_active: root.class_change(self, self.active, 'Bard')
+                    size_hint_x: None
+                    group: 'classes'
+                    allow_no_selection: False
+                Label:
+                    font_size: '18sp'
+                    size_hint_x: None   
+                    text: 'Bard'
+        
+                CheckBox:
+                    on_active: root.class_change(self, self.active, 'Cleric')
+                    size_hint_x: None
+                    group: 'classes'
+                    allow_no_selection: False
+                Label:
+                    font_size: '18sp'
+                    size_hint_x: None   
+                    text: 'Cleric'
+
+                CheckBox:
+                    on_active: root.class_change(self, self.active, 'Druid')
+                    size_hint_x: None
+                    group: 'classes'
+                    allow_no_selection: False
+                Label:
+                    font_size: '18sp'
+                    size_hint_x: None   
+                    text: 'Druid'
+                    
+                CheckBox:
+                    on_active: root.class_change(self, self.active, 'Fighter')
+                    size_hint_x: None
+                    group: 'classes'
+                    allow_no_selection: False
+                Label:
+                    font_size: '18sp'
+                    size_hint_x: None   
+                    text: 'Fighter'
+
+                CheckBox:
+                    on_active: root.class_change(self, self.active, 'Monk')
+                    size_hint_x: None
+                    group: 'classes'
+                    allow_no_selection: False
+                Label:
+                    font_size: '18sp'
+                    size_hint_x: None   
+                    text: 'Monk'
+
+                CheckBox:
+                    on_active: root.class_change(self, self.active, 'Paladin')
+                    size_hint_x: None
+                    group: 'classes'
+                    allow_no_selection: False
+                Label:
+                    font_size: '18sp'
+                    size_hint_x: None   
+                    text: 'Paladin'
+                    
+                CheckBox:
+                    on_active: root.class_change(self, self.active, 'Ranger')
+                    size_hint_x: None
+                    group: 'classes'
+                    allow_no_selection: False
+                Label:
+                    font_size: '18sp'
+                    size_hint_x: None   
+                    text: 'Ranger'
+
+                CheckBox:
+                    on_active: root.class_change(self, self.active, 'Rogue')
+                    size_hint_x: None
+                    group: 'classes'
+                    allow_no_selection: False
+                Label:
+                    font_size: '18sp'
+                    size_hint_x: None   
+                    text: 'Rogue'
+
+                CheckBox:
+                    on_active: root.class_change(self, self.active, 'Sorcerer')
+                    size_hint_x: None
+                    group: 'classes'
+                    allow_no_selection: False
+                Label:
+                    font_size: '18sp'
+                    size_hint_x: None   
+                    text: 'Sorcerer'
+
+                CheckBox:
+                    on_active: root.class_change(self, self.active, 'Warlock')
+                    size_hint_x: None
+                    group: 'classes'
+                    allow_no_selection: False
+                Label:
+                    font_size: '18sp'
+                    size_hint_x: None   
+                    text: 'Warlock'
+
+                CheckBox:
+                    on_active: root.class_change(self, self.active, 'Wizard')
+                    size_hint_x: None
+                    group: 'classes'
+                    allow_no_selection: False
+                Label:
+                    font_size: '18sp'
+                    size_hint_x: None   
+                    text: 'Wizard'
+
+
+        BoxLayout:
+            orientation: 'horizontal'
+            size_hint_y: 0.07
+            anchor_y:'bottom'
+
+            TextInput:
+                id: custom_class_input
+                size_hint_x: 0.8
+                font_size: '18dp'
+                halign: 'left'
+                hint_text: "Custom Class"
+
+            Button:
+                on_press: root.add_custom_class(self, custom_class_input.text, scroll_view_layout_classes)
+                size_hint_x: 0.2
+                text: 'Add\nClass'
+
+
+<AbilitiesPanel>:
+    text: 'Abilities'
+
+    GridLayout:
+        cols: 4
+        rows: 7
+        padding: [10, 10]
+
+        Label:
+            size_hint: (0.4, 0.1)
+        Label:
+            font_size: '22dp'
+            text: 'Ability Scores'
+            size_hint: (0.4, 0.1)
+        Label:
+            size_hint: (0.1, 0.1)
+        Label:
+            size_hint: (0.1, 0.1)
+        
+        AnchorLayout:
+            anchor_x: 'left'
+            anchor_y: 'center'
+            size_hint: (None, 0.2)
+            Label:
+                font_size: '18dp'
+                text: 'Strength:'
+                size_hint: (None, 1)
+        InputField:
+
+        AnchorLayout:
+            anchor_x: 'left'
+            anchor_y: 'center'
+            size_hint: (None, 0.2)
+            Label:
+                font_size: '18dp'
+                text: 'Dexterity:'
+                size_hint: (None, 1)
+        InputField:
+        
+        AnchorLayout:
+            anchor_x: 'left'
+            anchor_y: 'center'
+            size_hint: (None, 0.2)
+            Label:
+                font_size: '18dp'
+                text: 'Saving:'
+                size_hint: (None, 1)
+        InputField:
+
+        AnchorLayout:
+            anchor_x: 'left'
+            anchor_y: 'center'
+            size_hint: (None, 0.2)
+            Label:
+                font_size: '18dp'
+                text: 'Saving:'
+                size_hint: (None, 1)
+        InputField:
+        
+        AnchorLayout:
+            anchor_x: 'left'
+            anchor_y: 'center'
+            size_hint: (0.25, 0.2)
+            Label:
+                font_size: '18dp'
+                text: 'Constitution:'
+                size_hint: (None, 1)
+        InputField:
+
+        AnchorLayout:
+            anchor_x: 'left'
+            anchor_y: 'center'
+            size_hint: (0.25, 0.2)
+            Label:
+                font_size: '18dp'
+                text: 'Intelligence:'
+                size_hint: (None, 1)
+        InputField:
+        
+        AnchorLayout:
+            anchor_x: 'left'
+            anchor_y: 'center'
+            size_hint: (None, 0.2)
+            Label:
+                font_size: '18dp'
+                text: 'Saving:'
+                size_hint: (None, 1)
+        InputField:
+
+        AnchorLayout:
+            anchor_x: 'left'
+            anchor_y: 'center'
+            size_hint: (None, 0.2)
+            Label:
+                font_size: '18dp'
+                text: 'Saving:'
+                size_hint: (None, 1)
+        InputField:
+        
+        AnchorLayout:
+            anchor_x: 'left'
+            anchor_y: 'center'
+            size_hint: (None, 0.2)
+            Label:
+                font_size: '18dp'
+                text: 'Wisdom:'
+                size_hint: (None, 1)
+        InputField:
+
+        AnchorLayout:
+            anchor_x: 'left'
+            anchor_y: 'center'
+            size_hint: (None, 0.2)
+            Label:
+                font_size: '18dp'
+                text: 'Charisma:'
+                size_hint: (None, 1)
+        InputField:
+        
+        AnchorLayout:
+            anchor_x: 'left'
+            anchor_y: 'center'
+            size_hint: (None, 0.2)
+            Label:
+                font_size: '18dp'
+                text: 'Saving:'
+                size_hint: (None, 1)
+        InputField:
+
+        AnchorLayout:
+            anchor_x: 'left'
+            anchor_y: 'center'
+            size_hint: (None, 0.2)
+            Label:
+                font_size: '18dp'
+                text: 'Saving:'
+                size_hint: (None, 1)
+        InputField:
+        
+
+<SkillsPanel>:
+    text: 'Skills'
+
+    GridLayout:
+        cols: 4
+        rows: 9
+        padding: [10, 10]
+
+        AnchorLayout:
+            anchor_x: 'left'
+            anchor_y: 'center'
+            size_hint: (None, 0.2)
+            Label:
+                font_size: '18dp'
+                text: 'Acrobatics (Dex):'
+                size_hint: (None, 1)
+        InputField:
+
+        AnchorLayout:
+            anchor_x: 'left'
+            anchor_y: 'center'
+            size_hint: (None, 0.2)
+            Label:
+                font_size: '18dp'
+                text: 'Animal Handling (Wis):'
+                size_hint: (None, 1)
+        InputField:
+
+        AnchorLayout:
+            anchor_x: 'left'
+            anchor_y: 'center'
+            size_hint: (None, 0.2)
+            Label:
+                font_size: '18dp'
+                text: 'Arcana (Int):'
+                size_hint: (None, 1)
+        InputField:
+
+        AnchorLayout:
+            anchor_x: 'left'
+            anchor_y: 'center'
+            size_hint: (None, 0.2)
+            Label:
+                font_size: '18dp'
+                text: 'Athletics (Str):'
+                size_hint: (None, 1)
+        InputField:
+
+        AnchorLayout:
+            anchor_x: 'left'
+            anchor_y: 'center'
+            size_hint: (None, 0.2)
+            Label:
+                font_size: '18dp'
+                text: 'Deception (Cha):'
+                size_hint: (None, 1)
+        InputField:
+
+        AnchorLayout:
+            anchor_x: 'left'
+            anchor_y: 'center'
+            size_hint: (None, 0.2)
+            Label:
+                font_size: '18dp'
+                text: 'History (Int):'
+                size_hint: (None, 1)
+        InputField:
+
+        AnchorLayout:
+            anchor_x: 'left'
+            anchor_y: 'center'
+            size_hint: (None, 0.2)
+            Label:
+                font_size: '18dp'
+                text: 'Insight (Wis):'
+                size_hint: (None, 1)
+        InputField:
+
+        AnchorLayout:
+            anchor_x: 'left'
+            anchor_y: 'center'
+            size_hint: (None, 0.2)
+            Label:
+                font_size: '18dp'
+                text: 'Intimidation (Cha):'
+                size_hint: (None, 1)
+        InputField:
+
+        AnchorLayout:
+            anchor_x: 'left'
+            anchor_y: 'center'
+            size_hint: (None, 0.2)
+            Label:
+                font_size: '18dp'
+                text: 'Investigation (Int):'
+                size_hint: (None, 1)
+        InputField:
+
+        AnchorLayout:
+            anchor_x: 'left'
+            anchor_y: 'center'
+            size_hint: (None, 0.2)
+            Label:
+                font_size: '18dp'
+                text: 'Medicine (Wis):'
+                size_hint: (None, 1)
+        InputField:
+
+        AnchorLayout:
+            anchor_x: 'left'
+            anchor_y: 'center'
+            size_hint: (None, 0.2)
+            Label:
+                font_size: '18dp'
+                text: 'Nature (Int):'
+                size_hint: (None, 1)
+        InputField:
+
+        AnchorLayout:
+            anchor_x: 'left'
+            anchor_y: 'center'
+            size_hint: (None, 0.2)
+            Label:
+                font_size: '18dp'
+                text: 'Perception (Wis):'
+                size_hint: (None, 1)
+        InputField:
+
+        AnchorLayout:
+            anchor_x: 'left'
+            anchor_y: 'center'
+            size_hint: (None, 0.2)
+            Label:
+                font_size: '18dp'
+                text: 'Performance (Cha):'
+                size_hint: (None, 1)
+        InputField:
+
+        AnchorLayout:
+            anchor_x: 'left'
+            anchor_y: 'center'
+            size_hint: (None, 0.2)
+            Label:
+                font_size: '18dp'
+                text: 'Persuasion (Cha):'
+                size_hint: (None, 1)
+        InputField:
+
+        AnchorLayout:
+            anchor_x: 'left'
+            anchor_y: 'center'
+            size_hint: (None, 0.2)
+            Label:
+                font_size: '18dp'
+                text: 'Religion (Int):'
+                size_hint: (None, 1)
+        InputField:
+
+        AnchorLayout:
+            anchor_x: 'left'
+            anchor_y: 'center'
+            size_hint: (None, 0.2)
+            Label:
+                font_size: '18dp'
+                text: 'Sleight of Hand (Dex):'
+                size_hint: (None, 1)
+        InputField:
+
+        AnchorLayout:
+            anchor_x: 'left'
+            anchor_y: 'center'
+            size_hint: (None, 0.2)
+            Label:
+                font_size: '18dp'
+                text: 'Stealth (Dex):'
+                size_hint: (None, 1)
+        InputField:
+
+        AnchorLayout:
+            anchor_x: 'left'
+            anchor_y: 'center'
+            size_hint: (None, 0.2)
+            Label:
+                font_size: '18dp'
+                text: 'Survival (Wis):'
+                size_hint: (None, 1)
+        InputField:
+
+
+<StatsPanel>:
+    text: 'Stats'
+
+    GridLayout:
+        cols: 4
+        rows: 10
+        padding: [10, 10]
+
+        AnchorLayout:
+            anchor_x: 'left'
+            anchor_y: 'center'
+            size_hint: (None, 0.2)
+            Label:
+                font_size: '18dp'
+                text: 'Health:'
+                size_hint: (None, 1)
+        InputField:
+    
+        AnchorLayout:
+            anchor_x: 'left'
+            anchor_y: 'center'
+            size_hint: (None, 0.2)
+            Label:
+                font_size: '18dp'
+                text: 'Allignment:'
+                size_hint: (None, 1)
+        InputField:
+        
+        AnchorLayout:
+            anchor_x: 'left'
+            anchor_y: 'center'
+            size_hint: (None, 0.2)
+            Label:
+                font_size: '18dp'
+                text: 'Level:'
+                size_hint: (None, 1)
+        InputField:
+
+        AnchorLayout:
+            anchor_x: 'left'
+            anchor_y: 'center'
+            size_hint: (None, 0.2)
+            Label:
+                font_size: '18dp'
+                text: 'Exp Points:'
+                size_hint: (None, 1)
+        InputField:
+        
+        Label:
+            size_hint: (0.2, 0.1)
+        Label:
+            font_size: '22dp'
+            text: 'Physical Traits'
+            size_hint: (0.4, 0.1)
+        Label:
+            size_hint: (0.1, 0.1)
+        Label:
+            size_hint: (0.1, 0.1)
+        
+        AnchorLayout:
+            anchor_x: 'left'
+            anchor_y: 'center'
+            size_hint: (None, 0.2)
+            Label:
+                font_size: '18dp'
+                text: 'Gender:'
+                size_hint: (None, 1)
+        InputField:
+
+        AnchorLayout:
+            anchor_x: 'left'
+            anchor_y: 'center'
+            size_hint: (None, 0.2)
+            Label:
+                font_size: '18dp'
+                text: 'Hair:'
+                size_hint: (None, 1)
+        InputField:
+        
+        AnchorLayout:
+            anchor_x: 'left'
+            anchor_y: 'center'
+            size_hint: (0.25, 0.2)
+            Label:
+                font_size: '18dp'
+                text: 'Eyes:'
+                size_hint: (None, 1)
+        InputField:
+
+        AnchorLayout:
+            anchor_x: 'left'
+            anchor_y: 'center'
+            size_hint: (0.25, 0.2)
+            Label:
+                font_size: '18dp'
+                text: 'Size:'
+                size_hint: (None, 1)
+        InputField:
+        
+        AnchorLayout:
+            anchor_x: 'left'
+            anchor_y: 'center'
+            size_hint: (None, 0.2)
+            Label:
+                font_size: '18dp'
+                text: 'Height:'
+                size_hint: (None, 1)
+        InputField:
+
+        AnchorLayout:
+            anchor_x: 'left'
+            anchor_y: 'center'
+            size_hint: (None, 0.2)
+            Label:
+                font_size: '18dp'
+                text: 'Weight:'
+                size_hint: (None, 1)
+        InputField:
+
+
+<BonusesPanel>:
+    text: 'Bonuses'
+
+    GridLayout:
+        cols: 4
+        rows: 10
+        padding: [10, 10]
+
+        AnchorLayout:
+            anchor_x: 'left'
+            anchor_y: 'center'
+            size_hint: (None, 0.2)
+            Label:
+                font_size: '18dp'
+                text: 'Armor Class:'
+                size_hint: (None, 1)
+        InputField:
+
+        AnchorLayout:
+            anchor_x: 'left'
+            anchor_y: 'center'
+            size_hint: (None, 0.2)
+            Label:
+                font_size: '18dp'
+                text: 'Initiative:'
+                size_hint: (None, 1)
+        InputField:
+
+        AnchorLayout:
+            anchor_x: 'left'
+            anchor_y: 'center'
+            size_hint: (None, 0.2)
+            Label:
+                font_size: '18dp'
+                text: 'Inspiration:'
+                size_hint: (None, 1)
+        InputField:
+
+        AnchorLayout:
+            anchor_x: 'left'
+            anchor_y: 'center'
+            size_hint: (None, 0.2)
+            Label:
+                font_size: '18dp'
+                text: 'Proficiency\nBonus:'
+                size_hint: (None, 1)
+        InputField:
+
+        AnchorLayout:
+            anchor_x: 'left'
+            anchor_y: 'center'
+            size_hint: (None, 0.2)
+            Label:
+                font_size: '18dp'
+                text: 'Hit Dice:'
+                size_hint: (None, 1)
+        InputField:
+
+        AnchorLayout:
+            anchor_x: 'left'
+            anchor_y: 'center'
+            size_hint: (None, 0.2)
+            Label:
+                font_size: '18dp'
+                text: 'Proficiency\nBonus:'
+                size_hint: (None, 1)
+        InputField:
+
+        AnchorLayout:
+            anchor_x: 'left'
+            anchor_y: 'center'
+            size_hint: (None, 0.2)
+            Label:
+                font_size: '18dp'
+                text: 'Speed:'
+                size_hint: (None, 1)
+        InputField:
+
+        AnchorLayout:
+            anchor_x: 'left'
+            anchor_y: 'center'
+            size_hint: (None, 0.2)
+            Label:
+                font_size: '18dp'
+                text: 'Passive\nWisdom:'
+                size_hint: (None, 1)
+        InputField:
+
+
+<InventoryPanel>:
+    text: 'Inventory'
+
+    BoxLayout:
+        orientation: 'vertical'
+        
+        ScrollView:
+            scroll_type: ['bars']
+            size_hint_x: 1
+            bar_width: 15
+            do_scroll_x: False
+            do_scroll_y: True
+
+            GridLayout:
+                id: scroll_view_layout_inventory
+                height: self.minimum_height
+                size_hint_x: 1
+                size_hint_y: None
+                cols: 1
+                spacing: 10
+                row_default_height: 100
+                row_force_default: True
+
+        BoxLayout:
+            orientation: 'horizontal'
+            size_hint_y: 0.25
+            anchor_y:'bottom'
+
+            BoxLayout:
+                orientation: 'vertical'
+
+                BoxLayout:
+                    orientation: 'horizontal'
+                    size_hint_y: 0.4
+                    Button:
+                        id: item_dropdown_type
+                        size_hint_x: 0.3
+                        size_hint_y: 1
+                        text: 'Type'
+                        on_release: root.drop_down.open(self)
+                        
+                    TextInput:
+                        id: inventory_item_input
+                        size_hint_x: 0.7
+                        size_hint_y: 1
+                        font_size: '18dp'
+                        halign: 'left'
+                        hint_text: "Inventory Item"
+
+                TextInput:
+                    id: inventory_item_description_input
+                    size_hint_y: 0.6
+                    font_size: '18dp'
+                    halign: 'left'
+                    hint_text: "Inventory Description"
+
+            Button:
+                on_press: root.add_inventory_item(self, inventory_item_input.text, inventory_item_description_input.text, scroll_view_layout_inventory)
+                size_hint_x: 0.2
+                size_hint_y: 1
+                text: 'Add\nItem'
+
+
+<ProficienciesPanel>:
+    text: 'Proficiency'
+
+    BoxLayout:
+        orientation: 'vertical'
+        
+        ScrollView:
+            scroll_type: ['bars']
+            size_hint_x: 1
+            bar_width: 15
+            do_scroll_x: False
+            do_scroll_y: True
+
+            GridLayout:
+                id: scroll_view_layout_proficiency
+                height: self.minimum_height
+                size_hint_x: 1
+                size_hint_y: None
+                cols: 1
+                spacing: 10
+                row_default_height: 100
+                row_force_default: True
+
+        BoxLayout:
+            orientation: 'horizontal'
+            size_hint_y: 0.25
+            anchor_y:'bottom'
+
+            BoxLayout:
+                orientation: 'vertical'
+
+                BoxLayout:
+                    orientation: 'horizontal'
+                    size_hint_y: 0.4
+                    Button:
+                        id: proficiency_dropdown_type
+                        size_hint_x: 0.3
+                        size_hint_y: 1
+                        text: 'Type'
+                        on_release: root.drop_down.open(self)
+                        
+                    TextInput:
+                        id: proficiency_item_input
+                        size_hint_x: 0.7
+                        size_hint_y: 1
+                        font_size: '18dp'
+                        halign: 'left'
+                        hint_text: "Proficiency Name"
+
+                TextInput:
+                    id: proficiency_item_description_input
+                    size_hint_y: 0.6
+                    font_size: '18dp'
+                    halign: 'left'
+                    hint_text: "Proficiency Description"
+
+            Button:
+                on_press: root.add_proficiency(self, proficiency_item_input.text, proficiency_item_description_input.text, scroll_view_layout_proficiency)
+                size_hint_x: 0.2
+                size_hint_y: 1
+                text: 'Add\nProficiency'
+
+
+<AttackPanel>:
+    text: 'Attacks'
+
+    BoxLayout:
+        orientation: 'vertical'
+        
+        ScrollView:
+            scroll_type: ['bars']
+            size_hint_x: 1
+            bar_width: 15
+            do_scroll_x: False
+            do_scroll_y: True
+
+            GridLayout:
+                id: scroll_view_layout_attack
+                height: self.minimum_height
+                size_hint_x: 1
+                size_hint_y: None
+                cols: 1
+                spacing: 10
+                row_default_height: 100
+                row_force_default: True
+
+        BoxLayout:
+            orientation: 'horizontal'
+            size_hint_y: 0.25
+            anchor_y:'bottom'
+
+            BoxLayout:
+                orientation: 'vertical'
+
+                BoxLayout:
+                    orientation: 'horizontal'
+                    size_hint_y: 0.4
+                    Button:
+                        id: attack_dropdown_type
+                        size_hint_x: 0.3
+                        size_hint_y: 1
+                        text: 'Type'
+                        on_release: root.drop_down.open(self)
+                        
+                    TextInput:
+                        id: attack_item_input
+                        size_hint_x: 0.7
+                        size_hint_y: 1
+                        font_size: '18dp'
+                        halign: 'left'
+                        hint_text: "Attack Name"
+
+                TextInput:
+                    id: attack_item_description_input
+                    size_hint_y: 0.6
+                    font_size: '18dp'
+                    halign: 'left'
+                    hint_text: "Attack Description"
+
+            Button:
+                on_press: root.add_attack(self, attack_item_input.text, attack_item_description_input.text, scroll_view_layout_attack)
+                size_hint_x: 0.2
+                size_hint_y: 1
+                text: 'Add\nAttack'
+
+
+<InputField>:
+    anchor_x: 'center'
+    anchor_y: 'center'
+    size_hint: (0.25, 0.2)
+
+    TextInput:
+        id: health_input
+        font_size: '18dp'
+        halign: 'left'
+        background_color: [1, 1, 1, 0]
+        foreground_color: [1, 1, 1, 1]
+        hint_text_color: [1, 1, 1, 1]
+        hint_text: "___"
+        size_hint: (None, 0.5)
+
+<InventoryDropDown>:
+    id: inventory_dropdown
+    Button:
+        text: 'Weapon'
+        size_hint_y: None
+        height: 44
+        on_release: root.drop_down_control('Weapon')
+    Button:
+        text: 'Spell'
+        size_hint_y: None
+        height: 44
+        on_release: root.drop_down_control('Spell')
+    Button:
+        text: 'Other'
+        size_hint_y: None
+        height: 44
+        on_release: root.drop_down_control('Other')
+
+<AttackDropDown>:
+    id: inventory_dropdown
+    Button:
+        text: 'Spell'
+        size_hint_y: None
+        height: 44
+        on_release: root.drop_down_control('Spell')
+    Button:
+        text: 'Weapon'
+        size_hint_y: None
+        height: 44
+        on_release: root.drop_down_control('Weapon')
+
+<ProficienciesDropDown>:
+    id: inventory_dropdown
+    Button:
+        text: 'Language'
+        size_hint_y: None
+        height: 44
+        on_release: root.drop_down_control('Language')
+    Button:
+        text: 'Weapon'
+        size_hint_y: None
+        height: 44
+        on_release: root.drop_down_control('Weapon')
+    Button:
+        text: 'Tool'
+        size_hint_y: None
+        height: 44
+        on_release: root.drop_down_control('Tool')

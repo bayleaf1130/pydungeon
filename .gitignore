@@ -130,3 +130,11 @@ dmypy.json
 
 # Logs
 *.log
+=======
+#caches
+**/__pycache__
+**/debug.log
+
+#kivy environment
+**/kivy_venv
+>>>>>>> kivy_gui
