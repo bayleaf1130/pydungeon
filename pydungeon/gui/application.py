@@ -1,13 +1,19 @@
-
-from kivy.uix.gridlayout import GridLayout
+# regular imports
+from functools import partial
+# kivy imports
 from kivy.app import App
 from kivy.lang import Builder
+from kivy.core.window import Window
+# layout imports
+from kivy.uix.gridlayout import GridLayout
 from kivy.uix.boxlayout import BoxLayout
 from kivy.uix.anchorlayout import AnchorLayout
+# widget imports
 from kivy.uix.label import Label
+from kivy.uix.button import Button
 from kivy.uix.tabbedpanel import TabbedPanelItem
 from kivy.uix.checkbox import CheckBox
-from kivy.core.window import Window
+
 
 '''
 Kivy:
@@ -68,7 +74,6 @@ class RacePanel(TabbedPanelItem):
 
         scroll_gridlayout.add_widget(new_race_checkbox)
         scroll_gridlayout.add_widget(new_race_label)
-        pass
 
 
 class StatsPanel(TabbedPanelItem):
@@ -77,6 +82,54 @@ class StatsPanel(TabbedPanelItem):
 
 class BonusesPanel(TabbedPanelItem):
     pass
+
+
+class InventoryPanel(TabbedPanelItem):    
+    
+    def add_inventory_item(self, instance, item_name, item_description, scroll_gridlayout):
+        app=App.get_running_app()
+
+        layout = BoxLayout(orientation='horizontal')
+        inventory_description_label = Label(font_size='14sp', size_hint_x=0.7, text=item_description, halign="left", valign="top")
+        inventory_name_button = Button(font_size='18sp', size_hint_x=0.3, text=item_name.title())
+        inventory_name_button.pressed = 0
+        inventory_name_button.bind(on_press=lambda item_name: self.show_description(inventory_name_button, inventory_description_label, layout))
+
+        layout.add_widget(inventory_name_button)
+
+        scroll_gridlayout.add_widget(layout)
+
+    def show_description(self, name_button, description_label, layout):
+        name_button.pressed = (name_button.pressed + 1) % 2
+        if(name_button.pressed == 1):
+            layout.add_widget(description_label)
+        else:
+            layout.remove_widget(description_label)
+        pass
+
+
+class AttackPanel(TabbedPanelItem):    
+    
+    def add_attack(self, instance, attack_name, attack_description, scroll_gridlayout):
+        app=App.get_running_app()
+
+        layout = BoxLayout(orientation='horizontal')
+        attack_description_label = Label(font_size='14sp', size_hint_x=0.7, text=attack_description, halign="left", valign="top")
+        attack_name_button = Button(font_size='18sp', size_hint_x=0.3, text=attack_name.title())
+        attack_name_button.pressed = 0
+        attack_name_button.bind(on_press=lambda item_name: self.show_description(attack_name_button, attack_description_label, layout))
+
+        layout.add_widget(attack_name_button)
+
+        scroll_gridlayout.add_widget(layout)
+
+    def show_description(self, name_button, description_label, layout):
+        name_button.pressed = (name_button.pressed + 1) % 2
+        if(name_button.pressed == 1):
+            layout.add_widget(description_label)
+        else:
+            layout.remove_widget(description_label)
+        pass
 
 
 class SkillsPanel(TabbedPanelItem):

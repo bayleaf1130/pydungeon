@@ -84,20 +84,14 @@
                 
         BonusesPanel:
                 
-        TabbedPanelItem:
-            text: 'Inventory'
-            Label:
-                text: 'Inventory info'
+        InventoryPanel:
                 
         TabbedPanelItem:
             text: 'Proficiencies'
             Label:
                 text: 'Language + Weapon... Proficiency info'
                 
-        TabbedPanelItem:
-            text: 'Attacks'
-            Label:
-                text: 'Weapon Attacks + Spell Attacks info'
+        AttackPanel:
 
 
 <RacePanel>:
@@ -932,6 +926,106 @@
                 text: 'Passive\nWisdom:'
                 size_hint: (None, 1)
         InputField:
+
+
+<InventoryPanel>:
+    text: 'Inventory'
+
+    BoxLayout:
+        orientation: 'vertical'
+        
+        ScrollView:
+            scroll_type: ['bars']
+            size_hint_x: 1
+            bar_width: 15
+            do_scroll_x: False
+            do_scroll_y: True
+
+            GridLayout:
+                id: scroll_view_layout_inventory
+                height: self.minimum_height
+                size_hint_x: 1
+                size_hint_y: None
+                cols: 1
+                spacing: 10
+                row_default_height: 100
+                row_force_default: True
+
+        BoxLayout:
+            orientation: 'horizontal'
+            size_hint_y: 0.25
+            anchor_y:'bottom'
+
+            BoxLayout:
+                orientation: 'vertical'
+                TextInput:
+                    id: inventory_item_input
+                    size_hint_y: 0.4
+                    font_size: '18dp'
+                    halign: 'left'
+                    hint_text: "Inventory Item"
+
+                TextInput:
+                    id: inventory_item_description_input
+                    size_hint_y: 0.6
+                    font_size: '18dp'
+                    halign: 'left'
+                    hint_text: "Inventory Description"
+
+            Button:
+                on_press: root.add_inventory_item(self, inventory_item_input.text, inventory_item_description_input.text, scroll_view_layout_inventory)
+                size_hint_x: 0.2
+                text: 'Add\nItem'
+
+
+<AttackPanel>:
+    text: 'Attacks'
+
+    BoxLayout:
+        orientation: 'vertical'
+        
+        ScrollView:
+            scroll_type: ['bars']
+            size_hint_x: 1
+            bar_width: 15
+            do_scroll_x: False
+            do_scroll_y: True
+
+            GridLayout:
+                id: scroll_view_attack_inventory
+                height: self.minimum_height
+                size_hint_x: 1
+                size_hint_y: None
+                cols: 1
+                spacing: 10
+                row_default_height: 100
+                row_force_default: True
+
+        BoxLayout:
+            orientation: 'horizontal'
+            size_hint_y: 0.25
+            anchor_y:'bottom'
+
+            BoxLayout:
+                orientation: 'vertical'
+                TextInput:
+                    id: attack_item_input
+                    size_hint_y: 0.4
+                    font_size: '18dp'
+                    halign: 'left'
+                    hint_text: "Attack Name"
+
+                TextInput:
+                    id: attack_item_description_input
+                    size_hint_y: 0.6
+                    font_size: '18dp'
+                    halign: 'left'
+                    hint_text: "Attack Description"
+
+            Button:
+                on_press: root.add_attack(self, attack_item_input.text, attack_item_description_input.text, scroll_view_attack_inventory)
+                size_hint_x: 0.2
+                text: 'Add\nAttack'
 
 
 <InputField>:
