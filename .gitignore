@@ -134,3 +134,6 @@ dmypy.json
 
 #kivy environment
 **/kivy_venv
+
+# Logs
+*.log
