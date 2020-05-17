@@ -24,5 +24,14 @@ setuptools.setup(
     python_requires='>=3.7',
     entry_points={
         'console_scripts': ['dungeon=pydungeon:__main__']
-    }
+    },
+    install_requires=['docutils; platform_system == "Windows"',
+                      'pygments; platform_system == "Windows"',
+                      'pypiwin32; platform_system == "Windows"',
+                      'kivy_deps.sdl2==0.1.*; platform_system == "Windows"',
+                      'kivy_deps.glew==0.1.*; platform_system == "Windows"',
+                      'kivy_deps.gstreamer==0.1.*; platform_system == "Windows"',
+                      'kivy==1.11.1; platform_system == "Windows"',
+                      'pyYAML;',
+                      'pytest;']
 )
