@@ -3,6 +3,7 @@ from kivy.uix.gridlayout import GridLayout
 from kivy.app import App
 from kivy.lang import Builder
 from kivy.uix.boxlayout import BoxLayout
+from kivy.uix.anchorlayout import AnchorLayout
 from kivy.uix.label import Label
 from kivy.uix.tabbedpanel import TabbedPanelItem
 from kivy.uix.checkbox import CheckBox
@@ -31,7 +32,6 @@ class CharacterCreator(BoxLayout):
 
 class CreationTab(GridLayout):
     pass
-
 
 class ClassPanel(TabbedPanelItem):
 
@@ -69,6 +69,26 @@ class RacePanel(TabbedPanelItem):
         scroll_gridlayout.add_widget(new_race_checkbox)
         scroll_gridlayout.add_widget(new_race_label)
         pass
+
+
+class StatsPanel(TabbedPanelItem):
+    pass
+
+
+class BonusesPanel(TabbedPanelItem):
+    pass
+
+
+class SkillsPanel(TabbedPanelItem):
+    pass
+
+
+class AbilitiesPanel(TabbedPanelItem):
+    pass
+
+
+class InputField(AnchorLayout):
+    pass
 
 
 class GuiApplication(App):

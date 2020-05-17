@@ -35,20 +35,20 @@
 
 <CreationTab>:
     size_hint_y: 0.85
-    cols: 3
+    cols: 4
 
     TabbedPanel:
-        tab_width: self.width/3
+        tab_width: self.width/4
         do_default_tab: False
 
         RacePanel:
         
         ClassPanel:
                 
-        TabbedPanelItem:
-            text: 'Abilities'
-            Label:
-                text: 'Abilities info'
+        AbilitiesPanel:
+
+        SkillsPanel:
+
 
     RelativeLayout:
     
@@ -80,10 +80,9 @@
         tab_width: self.width/5
         do_default_tab: False
                 
-        TabbedPanelItem:
-            text: 'Stats'
-            Label:
-                text: 'Statistics info'
+        StatsPanel:
+                
+        BonusesPanel:
                 
         TabbedPanelItem:
             text: 'Inventory'
@@ -91,19 +90,14 @@
                 text: 'Inventory info'
                 
         TabbedPanelItem:
-            text: 'Weapons'
+            text: 'Proficiencies'
             Label:
-                text: 'Weapons info'
+                text: 'Language + Weapon... Proficiency info'
                 
         TabbedPanelItem:
             text: 'Attacks'
             Label:
-                text: 'Attacks info'
-                
-        TabbedPanelItem:
-            text: 'Spell\nAttacks'
-            Label:
-                text: 'Spell Attacks info'
+                text: 'Weapon Attacks + Spell Attacks info'
 
 
 <RacePanel>:
@@ -400,3 +394,557 @@
                 on_press: root.add_custom_class(self, custom_class_input.text, scroll_view_layout_classes)
                 size_hint_x: 0.2
                 text: 'Add\nClass'
+
+
+<AbilitiesPanel>:
+    text: 'Abilities'
+
+    GridLayout:
+        cols: 4
+        rows: 7
+        padding: [10, 10]
+
+        Label:
+            size_hint: (0.4, 0.1)
+        Label:
+            font_size: '22dp'
+            text: 'Ability Scores'
+            size_hint: (0.4, 0.1)
+        Label:
+            size_hint: (0.1, 0.1)
+        Label:
+            size_hint: (0.1, 0.1)
+        
+        AnchorLayout:
+            anchor_x: 'left'
+            anchor_y: 'center'
+            size_hint: (None, 0.2)
+            Label:
+                font_size: '18dp'
+                text: 'Strength:'
+                size_hint: (None, 1)
+        InputField:
+
+        AnchorLayout:
+            anchor_x: 'left'
+            anchor_y: 'center'
+            size_hint: (None, 0.2)
+            Label:
+                font_size: '18dp'
+                text: 'Dexterity:'
+                size_hint: (None, 1)
+        InputField:
+        
+        AnchorLayout:
+            anchor_x: 'left'
+            anchor_y: 'center'
+            size_hint: (None, 0.2)
+            Label:
+                font_size: '18dp'
+                text: 'Saving:'
+                size_hint: (None, 1)
+        InputField:
+
+        AnchorLayout:
+            anchor_x: 'left'
+            anchor_y: 'center'
+            size_hint: (None, 0.2)
+            Label:
+                font_size: '18dp'
+                text: 'Saving:'
+                size_hint: (None, 1)
+        InputField:
+        
+        AnchorLayout:
+            anchor_x: 'left'
+            anchor_y: 'center'
+            size_hint: (0.25, 0.2)
+            Label:
+                font_size: '18dp'
+                text: 'Constitution:'
+                size_hint: (None, 1)
+        InputField:
+
+        AnchorLayout:
+            anchor_x: 'left'
+            anchor_y: 'center'
+            size_hint: (0.25, 0.2)
+            Label:
+                font_size: '18dp'
+                text: 'Intelligence:'
+                size_hint: (None, 1)
+        InputField:
+        
+        AnchorLayout:
+            anchor_x: 'left'
+            anchor_y: 'center'
+            size_hint: (None, 0.2)
+            Label:
+                font_size: '18dp'
+                text: 'Saving:'
+                size_hint: (None, 1)
+        InputField:
+
+        AnchorLayout:
+            anchor_x: 'left'
+            anchor_y: 'center'
+            size_hint: (None, 0.2)
+            Label:
+                font_size: '18dp'
+                text: 'Saving:'
+                size_hint: (None, 1)
+        InputField:
+        
+        AnchorLayout:
+            anchor_x: 'left'
+            anchor_y: 'center'
+            size_hint: (None, 0.2)
+            Label:
+                font_size: '18dp'
+                text: 'Wisdom:'
+                size_hint: (None, 1)
+        InputField:
+
+        AnchorLayout:
+            anchor_x: 'left'
+            anchor_y: 'center'
+            size_hint: (None, 0.2)
+            Label:
+                font_size: '18dp'
+                text: 'Charisma:'
+                size_hint: (None, 1)
+        InputField:
+        
+        AnchorLayout:
+            anchor_x: 'left'
+            anchor_y: 'center'
+            size_hint: (None, 0.2)
+            Label:
+                font_size: '18dp'
+                text: 'Saving:'
+                size_hint: (None, 1)
+        InputField:
+
+        AnchorLayout:
+            anchor_x: 'left'
+            anchor_y: 'center'
+            size_hint: (None, 0.2)
+            Label:
+                font_size: '18dp'
+                text: 'Saving:'
+                size_hint: (None, 1)
+        InputField:
+        
+
+<SkillsPanel>:
+    text: 'Skills'
+
+    GridLayout:
+        cols: 4
+        rows: 9
+        padding: [10, 10]
+
+        AnchorLayout:
+            anchor_x: 'left'
+            anchor_y: 'center'
+            size_hint: (None, 0.2)
+            Label:
+                font_size: '18dp'
+                text: 'Acrobatics (Dex):'
+                size_hint: (None, 1)
+        InputField:
+
+        AnchorLayout:
+            anchor_x: 'left'
+            anchor_y: 'center'
+            size_hint: (None, 0.2)
+            Label:
+                font_size: '18dp'
+                text: 'Animal Handling (Wis):'
+                size_hint: (None, 1)
+        InputField:
+
+        AnchorLayout:
+            anchor_x: 'left'
+            anchor_y: 'center'
+            size_hint: (None, 0.2)
+            Label:
+                font_size: '18dp'
+                text: 'Arcana (Int):'
+                size_hint: (None, 1)
+        InputField:
+
+        AnchorLayout:
+            anchor_x: 'left'
+            anchor_y: 'center'
+            size_hint: (None, 0.2)
+            Label:
+                font_size: '18dp'
+                text: 'Athletics (Str):'
+                size_hint: (None, 1)
+        InputField:
+
+        AnchorLayout:
+            anchor_x: 'left'
+            anchor_y: 'center'
+            size_hint: (None, 0.2)
+            Label:
+                font_size: '18dp'
+                text: 'Deception (Cha):'
+                size_hint: (None, 1)
+        InputField:
+
+        AnchorLayout:
+            anchor_x: 'left'
+            anchor_y: 'center'
+            size_hint: (None, 0.2)
+            Label:
+                font_size: '18dp'
+                text: 'History (Int):'
+                size_hint: (None, 1)
+        InputField:
+
+        AnchorLayout:
+            anchor_x: 'left'
+            anchor_y: 'center'
+            size_hint: (None, 0.2)
+            Label:
+                font_size: '18dp'
+                text: 'Insight (Wis):'
+                size_hint: (None, 1)
+        InputField:
+
+        AnchorLayout:
+            anchor_x: 'left'
+            anchor_y: 'center'
+            size_hint: (None, 0.2)
+            Label:
+                font_size: '18dp'
+                text: 'Intimidation (Cha):'
+                size_hint: (None, 1)
+        InputField:
+
+        AnchorLayout:
+            anchor_x: 'left'
+            anchor_y: 'center'
+            size_hint: (None, 0.2)
+            Label:
+                font_size: '18dp'
+                text: 'Investigation (Int):'
+                size_hint: (None, 1)
+        InputField:
+
+        AnchorLayout:
+            anchor_x: 'left'
+            anchor_y: 'center'
+            size_hint: (None, 0.2)
+            Label:
+                font_size: '18dp'
+                text: 'Medicine (Wis):'
+                size_hint: (None, 1)
+        InputField:
+
+        AnchorLayout:
+            anchor_x: 'left'
+            anchor_y: 'center'
+            size_hint: (None, 0.2)
+            Label:
+                font_size: '18dp'
+                text: 'Nature (Int):'
+                size_hint: (None, 1)
+        InputField:
+
+        AnchorLayout:
+            anchor_x: 'left'
+            anchor_y: 'center'
+            size_hint: (None, 0.2)
+            Label:
+                font_size: '18dp'
+                text: 'Perception (Wis):'
+                size_hint: (None, 1)
+        InputField:
+
+        AnchorLayout:
+            anchor_x: 'left'
+            anchor_y: 'center'
+            size_hint: (None, 0.2)
+            Label:
+                font_size: '18dp'
+                text: 'Performance (Cha):'
+                size_hint: (None, 1)
+        InputField:
+
+        AnchorLayout:
+            anchor_x: 'left'
+            anchor_y: 'center'
+            size_hint: (None, 0.2)
+            Label:
+                font_size: '18dp'
+                text: 'Persuasion (Cha):'
+                size_hint: (None, 1)
+        InputField:
+
+        AnchorLayout:
+            anchor_x: 'left'
+            anchor_y: 'center'
+            size_hint: (None, 0.2)
+            Label:
+                font_size: '18dp'
+                text: 'Religion (Int):'
+                size_hint: (None, 1)
+        InputField:
+
+        AnchorLayout:
+            anchor_x: 'left'
+            anchor_y: 'center'
+            size_hint: (None, 0.2)
+            Label:
+                font_size: '18dp'
+                text: 'Sleight of Hand (Dex):'
+                size_hint: (None, 1)
+        InputField:
+
+        AnchorLayout:
+            anchor_x: 'left'
+            anchor_y: 'center'
+            size_hint: (None, 0.2)
+            Label:
+                font_size: '18dp'
+                text: 'Stealth (Dex):'
+                size_hint: (None, 1)
+        InputField:
+
+        AnchorLayout:
+            anchor_x: 'left'
+            anchor_y: 'center'
+            size_hint: (None, 0.2)
+            Label:
+                font_size: '18dp'
+                text: 'Survival (Wis):'
+                size_hint: (None, 1)
+        InputField:
+
+
+<StatsPanel>:
+    text: 'Stats'
+
+    GridLayout:
+        cols: 4
+        rows: 10
+        padding: [10, 10]
+
+        AnchorLayout:
+            anchor_x: 'left'
+            anchor_y: 'center'
+            size_hint: (None, 0.2)
+            Label:
+                font_size: '18dp'
+                text: 'Health:'
+                size_hint: (None, 1)
+        InputField:
+    
+        AnchorLayout:
+            anchor_x: 'left'
+            anchor_y: 'center'
+            size_hint: (None, 0.2)
+            Label:
+                font_size: '18dp'
+                text: 'Allignment:'
+                size_hint: (None, 1)
+        InputField:
+        
+        AnchorLayout:
+            anchor_x: 'left'
+            anchor_y: 'center'
+            size_hint: (None, 0.2)
+            Label:
+                font_size: '18dp'
+                text: 'Level:'
+                size_hint: (None, 1)
+        InputField:
+
+        AnchorLayout:
+            anchor_x: 'left'
+            anchor_y: 'center'
+            size_hint: (None, 0.2)
+            Label:
+                font_size: '18dp'
+                text: 'Exp Points:'
+                size_hint: (None, 1)
+        InputField:
+        
+        Label:
+            size_hint: (0.2, 0.1)
+        Label:
+            font_size: '22dp'
+            text: 'Physical Traits'
+            size_hint: (0.4, 0.1)
+        Label:
+            size_hint: (0.1, 0.1)
+        Label:
+            size_hint: (0.1, 0.1)
+        
+        AnchorLayout:
+            anchor_x: 'left'
+            anchor_y: 'center'
+            size_hint: (None, 0.2)
+            Label:
+                font_size: '18dp'
+                text: 'Gender:'
+                size_hint: (None, 1)
+        InputField:
+
+        AnchorLayout:
+            anchor_x: 'left'
+            anchor_y: 'center'
+            size_hint: (None, 0.2)
+            Label:
+                font_size: '18dp'
+                text: 'Hair:'
+                size_hint: (None, 1)
+        InputField:
+        
+        AnchorLayout:
+            anchor_x: 'left'
+            anchor_y: 'center'
+            size_hint: (0.25, 0.2)
+            Label:
+                font_size: '18dp'
+                text: 'Eyes:'
+                size_hint: (None, 1)
+        InputField:
+
+        AnchorLayout:
+            anchor_x: 'left'
+            anchor_y: 'center'
+            size_hint: (0.25, 0.2)
+            Label:
+                font_size: '18dp'
+                text: 'Size:'
+                size_hint: (None, 1)
+        InputField:
+        
+        AnchorLayout:
+            anchor_x: 'left'
+            anchor_y: 'center'
+            size_hint: (None, 0.2)
+            Label:
+                font_size: '18dp'
+                text: 'Height:'
+                size_hint: (None, 1)
+        InputField:
+
+        AnchorLayout:
+            anchor_x: 'left'
+            anchor_y: 'center'
+            size_hint: (None, 0.2)
+            Label:
+                font_size: '18dp'
+                text: 'Weight:'
+                size_hint: (None, 1)
+        InputField:
+
+
+<BonusesPanel>:
+    text: 'Bonuses'
+
+    GridLayout:
+        cols: 4
+        rows: 10
+        padding: [10, 10]
+
+        AnchorLayout:
+            anchor_x: 'left'
+            anchor_y: 'center'
+            size_hint: (None, 0.2)
+            Label:
+                font_size: '18dp'
+                text: 'Armor Class:'
+                size_hint: (None, 1)
+        InputField:
+
+        AnchorLayout:
+            anchor_x: 'left'
+            anchor_y: 'center'
+            size_hint: (None, 0.2)
+            Label:
+                font_size: '18dp'
+                text: 'Initiative:'
+                size_hint: (None, 1)
+        InputField:
+
+        AnchorLayout:
+            anchor_x: 'left'
+            anchor_y: 'center'
+            size_hint: (None, 0.2)
+            Label:
+                font_size: '18dp'
+                text: 'Inspiration:'
+                size_hint: (None, 1)
+        InputField:
+
+        AnchorLayout:
+            anchor_x: 'left'
+            anchor_y: 'center'
+            size_hint: (None, 0.2)
+            Label:
+                font_size: '18dp'
+                text: 'Proficiency\nBonus:'
+                size_hint: (None, 1)
+        InputField:
+
+        AnchorLayout:
+            anchor_x: 'left'
+            anchor_y: 'center'
+            size_hint: (None, 0.2)
+            Label:
+                font_size: '18dp'
+                text: 'Hit Dice:'
+                size_hint: (None, 1)
+        InputField:
+
+        AnchorLayout:
+            anchor_x: 'left'
+            anchor_y: 'center'
+            size_hint: (None, 0.2)
+            Label:
+                font_size: '18dp'
+                text: 'Proficiency\nBonus:'
+                size_hint: (None, 1)
+        InputField:
+
+        AnchorLayout:
+            anchor_x: 'left'
+            anchor_y: 'center'
+            size_hint: (None, 0.2)
+            Label:
+                font_size: '18dp'
+                text: 'Speed:'
+                size_hint: (None, 1)
+        InputField:
+
+        AnchorLayout:
+            anchor_x: 'left'
+            anchor_y: 'center'
+            size_hint: (None, 0.2)
+            Label:
+                font_size: '18dp'
+                text: 'Passive\nWisdom:'
+                size_hint: (None, 1)
+        InputField:
+
+
+<InputField>:
+    anchor_x: 'center'
+    anchor_y: 'center'
+    size_hint: (0.25, 0.2)
+
+    TextInput:
+        id: health_input
+        font_size: '18dp'
+        halign: 'left'
+        background_color: [1, 1, 1, 0]
+        foreground_color: [1, 1, 1, 1]
+        hint_text_color: [1, 1, 1, 1]
+        hint_text: "___"
+        size_hint: (None, 0.5)
