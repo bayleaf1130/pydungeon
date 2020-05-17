@@ -137,3 +137,6 @@ dmypy.json
 
 # Logs
 *.log
+
+# Pytest_Coverage
+htmlcov
